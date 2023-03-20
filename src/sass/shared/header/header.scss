@@ -1,0 +1,33 @@
+@use '../../variables' as *;
+
+.header {
+  background-color: #191919;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacer;
+    border-bottom: 1px solid rgba($white, 0.1);
+
+    nav {
+      display: none;
+      gap: $spacer;
+
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #ffffff;
+        font-weight: 700;
+        transition: color 250ms linear;
+
+        &:hover {
+          color: $brown-100;
+        }
+        &.active {
+          color: $brown-200;
+        }
+      }
+    }
+  }
+}

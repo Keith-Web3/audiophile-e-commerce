@@ -1,0 +1,115 @@
+@use '../variables' as *;
+
+.homepage {
+  .container {
+    .hero-section {
+      background-image: url('../../assets/home/mobile/image-header.jpg');
+      min-height: calc(100vh - 60.6px);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #191919;
+      background-position: center -1 * $spacer;
+      display: grid;
+      place-content: center;
+      text-align: center;
+
+      p:first-of-type {
+        order: -1;
+        font-weight: 400;
+        letter-spacing: 10px;
+        color: rgba($white, 0.5);
+        margin-bottom: $spacer;
+      }
+      p:nth-of-type(2) {
+        font-weight: 500;
+        color: rgba($white, 0.75);
+        line-height: 25px;
+        margin-top: $spacer * 1.45;
+      }
+      h1 {
+        color: $white;
+        font-size: 36px;
+        line-height: 40px;
+      }
+      & > * {
+        max-width: 328px;
+      }
+      button {
+        margin-inline: auto;
+        margin-top: $spacer * 1.45;
+      }
+    }
+    .section-two {
+      padding: $spacer;
+      padding-top: $spacer * 4;
+
+      .zx9 {
+        background-color: $brown-200;
+        padding: $spacer * 2 $spacer;
+        text-align: center;
+        border-radius: 8px;
+        background-image: url('../../assets//shared/mobile/waves.png');
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+
+        & > * {
+          max-width: 349px;
+          margin-inline: auto;
+        }
+        img {
+          width: 50%;
+          margin-bottom: $spacer * 1.5;
+        }
+        h2 {
+          color: $white;
+          font-size: 36px;
+          line-height: 40px;
+          width: min-content;
+        }
+        p {
+          font-weight: 500;
+          color: rgba($white, 0.75);
+          margin-block: $spacer * 2 $spacer * 1.35;
+        }
+        button {
+          background-color: $dark-200;
+          color: $white;
+        }
+      }
+      .zx7 {
+        background-image: url(../../assets/home/mobile/image-speaker-zx7.jpg);
+        background-size: cover;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        border-radius: 8px;
+        padding: $spacer * 4 $spacer;
+        margin-top: $spacer;
+
+        h2 {
+          margin-bottom: $spacer;
+        }
+      }
+      .yx1 {
+        margin-top: $spacer;
+        .img {
+          background-image: url(../../assets/home/mobile/image-earphones-yx1.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          padding-block: $spacer * 6;
+          border-radius: 8px;
+        }
+        .info {
+          margin-top: $spacer;
+          padding: $spacer * 3 $spacer;
+          background-color: $white-300;
+          border-radius: 8px;
+
+          h2 {
+            margin-bottom: $spacer;
+          }
+        }
+      }
+    }
+  }
+}

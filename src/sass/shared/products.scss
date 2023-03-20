@@ -1,0 +1,27 @@
+@use '../variables' as *;
+
+.products {
+  .product {
+    background-color: $white-300;
+    margin-bottom: $spacer * 3.5;
+    border-radius: 8px;
+    padding: $spacer * 3.5 $spacer $spacer * 0.5;
+    position: relative;
+
+    & > img {
+      position: absolute;
+      inset: 0 auto auto 50%;
+      transform: translate(-50%, -40%);
+      width: 109px;
+    }
+    p {
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.07px;
+      text-align: center;
+    }
+    button {
+      margin-inline: auto;
+    }
+  }
+}

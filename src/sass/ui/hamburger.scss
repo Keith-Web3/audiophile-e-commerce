@@ -1,0 +1,23 @@
+@use '../variables' as *;
+
+.hamburger {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  height: calc(2px + ($spacer * 1.6));
+  gap: $spacer;
+  cursor: pointer;
+
+  div {
+    width: 100%;
+    height: 2px;
+    background-color: $white;
+    position: absolute;
+
+    &:nth-child(2) {
+      transform: translateY($spacer * 0.8);
+    }
+    &:last-child {
+      transform: translateY($spacer * 1.6);
+    }
+  }
+}

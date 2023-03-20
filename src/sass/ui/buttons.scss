@@ -1,0 +1,27 @@
+@use '../variables' as *;
+
+.buttons {
+  @include buttonDefault;
+
+  &.button-one {
+    background-color: $brown-200;
+    color: $white;
+  }
+  &.button-two {
+    background-color: transparent;
+    color: $dark-200;
+    border: 1px solid $dark-200;
+  }
+  &.button-three {
+    background-color: transparent;
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    column-gap: $spacer;
+    color: rgba($dark-200, 0.5);
+
+    img {
+      height: 1rem;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@use 'resets';
+
+body {
+  font-family: 'Manrope', 'Nunito', Verdana, Geneva, Tahoma, sans-serif;
+}
+img:not(header img) {
+  width: 100%;
+}

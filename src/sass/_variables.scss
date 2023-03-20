@@ -1,0 +1,24 @@
+$spacer: 1em;
+$brown-100: #fbaf85;
+$brown-200: #d87d4a;
+$white: #ffffff;
+$white-200: #fafafa;
+$white-300: #f1f1f1;
+$dark-100: #101010;
+$dark-200: #000000;
+
+@mixin screen($size) {
+  @media (min-width: #{$size}px) {
+    @content;
+  }
+}
+@mixin buttonDefault() {
+  all: unset;
+  padding: 0.75em 1.3em;
+  font-weight: 700;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  width: max-content;
+}

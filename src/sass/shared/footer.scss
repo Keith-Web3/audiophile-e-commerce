@@ -1,0 +1,76 @@
+@use '../variables' as *;
+
+.footer {
+  margin-top: $spacer * 2;
+  & > .container {
+    display: grid;
+    padding: $spacer;
+    text-align: center;
+
+    img {
+      order: -1;
+      width: 100%;
+      border-radius: 8px;
+    }
+    h2 {
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 38px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: $dark-200;
+      margin-block: $spacer * 0.6;
+
+      span {
+        color: $brown-200;
+      }
+    }
+    p {
+      font-weight: 500;
+      line-height: 25px;
+      color: rgba($dark-200, 0.5);
+    }
+  }
+  footer {
+    background-color: $dark-100;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0 auto auto 50%;
+      transform: translateX(-50%);
+      background-color: $brown-200;
+      width: 100px;
+      height: 4px;
+    }
+
+    .container {
+      padding: $spacer * 2 $spacer;
+      display: grid;
+      row-gap: $spacer;
+      place-items: center;
+      text-align: center;
+
+      .logo {
+        width: 150px;
+      }
+      ul {
+        li {
+          list-style-type: none;
+          line-height: 3;
+          a {
+            text-transform: uppercase;
+            text-decoration: none;
+            color: $white;
+          }
+        }
+      }
+      p {
+        font-weight: 500;
+        line-height: 25px;
+        color: rgba($white, 0.5);
+      }
+    }
+  }
+}
