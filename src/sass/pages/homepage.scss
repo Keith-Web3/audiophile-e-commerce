@@ -32,12 +32,13 @@
       place-content: center;
       text-align: center;
       padding: $spacer;
-      min-height: calc(100vh - 58px);
+      min-height: calc(100vh - 60.6px);
 
       @include screen(900) {
         place-content: unset;
         align-content: center;
         text-align: start;
+        min-height: calc(100vh - 58px);
       }
       p:first-of-type {
         order: -1;
