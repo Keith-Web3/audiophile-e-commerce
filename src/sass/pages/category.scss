@@ -1,0 +1,27 @@
+@use '../variables' as *;
+
+.category {
+  & + .header {
+    background-color: $dark-200;
+  }
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: $spacer;
+  }
+
+  .hero-section {
+    padding-block: $spacer * 4;
+    background-color: $dark-200;
+    display: grid;
+    place-content: center;
+    margin-bottom: $spacer * 2;
+
+    h1 {
+      text-transform: uppercase;
+      font-size: 28px;
+      color: $white;
+      letter-spacing: 1px;
+    }
+  }
+}

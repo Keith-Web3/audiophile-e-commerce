@@ -1,0 +1,113 @@
+@use '../variables' as *;
+
+.product {
+  text-align: center;
+  margin-bottom: $spacer * 3;
+  img {
+    border-radius: 8px;
+
+    @include screen(900) {
+      grid-area: img;
+    }
+  }
+  @include screen(545) {
+    &.yx1 img {
+      content: url('../../assets/product-yx1-earphones/tablet/image-category-page-preview.jpg');
+    }
+    &.zx7 img {
+      content: url('../../assets/product-zx7-speaker/tablet/image-category-page-preview.jpg');
+    }
+    &.zx9 img {
+      content: url('../../assets/product-zx9-speaker/tablet/image-category-page-preview.jpg');
+    }
+    &.x992 img {
+      content: url('../../assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg');
+    }
+    &.x991 img {
+      content: url('../../assets/product-xx99-mark-one-headphones/tablet/image-category-page-preview.jpg');
+    }
+    &.x59 img {
+      content: url('../../assets/product-xx59-headphones/tablet/image-category-page-preview.jpg');
+    }
+  }
+  @include screen(900) {
+    display: grid;
+    grid-template: 1fr repeat(4, auto) 1fr / repeat(2, 1fr);
+    text-align: start;
+    column-gap: $spacer * 2;
+
+    &:nth-of-type(2n + 1) {
+      grid-template-areas: 'img .' 'img new-product' 'img header' 'img desc' 'img button' 'img .';
+    }
+    &:nth-of-type(2n) {
+      grid-template-areas: '. img' 'new-product img' 'header img' 'desc img' 'button img' '. img';
+    }
+    &.yx1 img {
+      content: url('../../assets/product-yx1-earphones/desktop/image-category-page-preview.jpg');
+    }
+    &.zx7 img {
+      content: url('../../assets/product-zx7-speaker/desktop/image-category-page-preview.jpg');
+    }
+    &.zx9 img {
+      content: url('../../assets/product-zx9-speaker/desktop/image-category-page-preview.jpg');
+    }
+    &.x992 img {
+      content: url('../../assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg');
+    }
+    &.x991 img {
+      content: url('../../assets/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg');
+    }
+    &.x59 img {
+      content: url('../../assets/product-xx59-headphones/desktop/image-category-page-preview.jpg');
+    }
+  }
+  .new-product {
+    text-transform: uppercase;
+    color: $brown-200;
+    letter-spacing: 10px;
+    margin-block: $spacer -0.5 * $spacer;
+
+    @include screen(900) {
+      grid-area: new-product;
+    }
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 38px;
+    letter-spacing: 1px;
+    margin-top: $spacer * 0.5;
+
+    @include screen(900) {
+      grid-area: header;
+      font-size: 40px;
+      line-height: 44px;
+      letter-spacing: 1.5px;
+    }
+  }
+  .desc {
+    line-height: 25px;
+    color: rgba($dark-200, 0.5);
+    margin-block: $spacer;
+
+    @include screen(545) {
+      font-size: 1.075rem;
+      line-height: 30px;
+      max-width: 690px;
+      margin-inline: auto;
+    }
+    @include screen(900) {
+      grid-area: desc;
+      font-size: 1.1rem;
+    }
+  }
+  a {
+    text-decoration: none;
+    margin-inline: auto;
+
+    @include screen(900) {
+      grid-area: button;
+      margin-inline: 0;
+    }
+  }
+}

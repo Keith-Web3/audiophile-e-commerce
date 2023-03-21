@@ -6,3 +6,9 @@ body {
 img:not(header img) {
   width: 100%;
 }
+#root {
+  display: grid;
+  .header {
+    order: -1;
+  }
+}

@@ -10,7 +10,7 @@ import Button from '../UI/Button'
 const Products: React.FC = function () {
   return (
     <div className="container products">
-      <div className="product">
+      <div className="product__main">
         <img src={headphones} alt="headphones" />
         <p>headphones</p>
         <Button className="button-three">
@@ -18,7 +18,7 @@ const Products: React.FC = function () {
           <img src={arrowRight} alt="shop" />
         </Button>
       </div>
-      <div className="product">
+      <div className="product__main">
         <img src={speakers} alt="speakers" />
         <p>speakers</p>
         <Button className="button-three">
@@ -26,7 +26,7 @@ const Products: React.FC = function () {
           <img src={arrowRight} alt="shop" />
         </Button>
       </div>
-      <div className="product">
+      <div className="product__main">
         <img src={earphones} alt="earphones" />
         <p>earphones</p>
         <Button className="button-three">

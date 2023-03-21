@@ -1,13 +1,9 @@
 import React from 'react'
 
-// import heroHeadphonesDesktop from '../../assets/home/desktop/image-hero.jpg'
-// import heroHeadphonesTablet from '../../assets/home/tablet/image-header.jpg'
-// import heroHeadphonesMobile from '../../assets/home/mobile/image-header.jpg'
 import speaker from '../../assets/home/mobile/image-speaker-zx9.png'
 import Button from '../UI/Button'
 import Products from '../shared/Products'
 import '../../sass/pages/homepage.scss'
-import Footer from '../shared/Footer'
 
 const Homepage: React.FC = function () {
   return (
@@ -48,7 +44,6 @@ const Homepage: React.FC = function () {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   )
 }
