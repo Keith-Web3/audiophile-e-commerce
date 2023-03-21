@@ -1,16 +1,35 @@
 @use '../variables' as *;
 
 .footer {
-  margin-top: $spacer * 2;
+  padding-top: $spacer * 2;
+  background-color: $white;
+
   & > .container {
     display: grid;
     padding: $spacer;
     text-align: center;
+    max-width: 1200px;
+    margin-inline: auto;
+
+    @include screen(900) {
+      text-align: start;
+      column-gap: $spacer;
+      grid-template: 1fr auto auto 1fr / repeat(2, 1fr);
+      grid-template-areas: '. img' 'header img' 'desc img' '. img';
+    }
 
     img {
       order: -1;
       width: 100%;
       border-radius: 8px;
+
+      @include screen(545) {
+        content: url('../../assets/shared/tablet/image-best-gear.jpg');
+      }
+      @include screen(900) {
+        content: url('../../assets/shared/desktop/image-best-gear.jpg');
+        grid-area: img;
+      }
     }
     h2 {
       font-weight: 700;
@@ -21,6 +40,16 @@
       color: $dark-200;
       margin-block: $spacer * 0.6;
 
+      @include screen(545) {
+        font-size: 40px;
+        line-height: 44px;
+        margin-top: $spacer;
+      }
+      @include screen(900) {
+        max-width: 450px;
+        grid-area: header;
+      }
+
       span {
         color: $brown-200;
       }
@@ -29,6 +58,16 @@
       font-weight: 500;
       line-height: 25px;
       color: rgba($dark-200, 0.5);
+
+      @include screen(545) {
+        margin-bottom: $spacer * 2;
+        font-size: 1.1rem;
+        line-height: 30px;
+      }
+      @include screen(900) {
+        max-width: 450px;
+        grid-area: desc;
+      }
     }
   }
   footer {
@@ -51,18 +90,67 @@
       row-gap: $spacer;
       place-items: center;
       text-align: center;
+      max-width: 1200px;
+      margin-inline: auto;
+
+      @include screen(545) {
+        grid-template: repeat(4, auto) / 1fr max-content;
+        grid-template-areas: 'logo .' 'links .' 'desc desc' 'copyright social';
+        gap: $spacer * 2 $spacer;
+        text-align: start;
+        place-items: unset;
+      }
+
+      @include screen(900) {
+        grid-template: repeat(3, auto) / 1fr max-content;
+        grid-template-areas: 'logo links' 'desc social' 'copyright .';
+        column-gap: $spacer * 2;
+      }
 
       .logo {
         width: 150px;
+
+        @include screen(545) {
+          grid-area: logo;
+        }
       }
       ul {
+        @include screen(545) {
+          grid-area: links;
+          display: flex;
+          align-items: center;
+          gap: $spacer * 1.5;
+        }
+
         li {
           list-style-type: none;
           line-height: 3;
+          @include screen(545) {
+            line-height: unset;
+          }
           a {
             text-transform: uppercase;
             text-decoration: none;
             color: $white;
+            position: relative;
+            isolation: isolate;
+
+            &::after {
+              content: '';
+              position: absolute;
+              inset: auto auto 3px 0;
+              width: 0;
+              height: 5px;
+              background-color: rgba($brown-200, 0.6);
+              z-index: -1;
+              transition: width 200ms linear;
+            }
+
+            &:hover {
+              &::after {
+                width: 80%;
+              }
+            }
           }
         }
       }
@@ -70,6 +158,35 @@
         font-weight: 500;
         line-height: 25px;
         color: rgba($white, 0.5);
+
+        @include screen(545) {
+          grid-area: copyright;
+        }
+        &:nth-of-type(1) {
+          @include screen(545) {
+            grid-area: desc;
+          }
+          @include screen(900) {
+            max-width: 550px;
+            line-height: 30px;
+          }
+        }
+      }
+      .social {
+        display: flex;
+        align-items: center;
+        gap: $spacer * 1.5;
+
+        @include screen(545) {
+          grid-area: social;
+        }
+        @include screen(900) {
+          margin: auto 0 0 auto;
+        }
+
+        img {
+          width: 25px;
+        }
       }
     }
   }

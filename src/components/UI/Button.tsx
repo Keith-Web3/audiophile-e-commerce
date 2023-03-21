@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import '../../sass/ui/buttons.scss'
 
 interface Props {
-  className: 'button-one' | 'button-two' | 'button-three'
+  className: 'button-one' | 'button-two' | 'button-three' | 'button-four'
   children: ReactNode
 }
 
@@ -16,6 +16,8 @@ const Button: React.FC<Props> = function ({ className, children, ...props }) {
         ? 'transparent'
         : className === 'button-one'
         ? '#FBAF85'
+        : className === 'button-four'
+        ? '#4C4C4C'
         : '#000000',
   }
   return (

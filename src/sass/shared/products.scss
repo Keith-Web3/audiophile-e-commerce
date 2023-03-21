@@ -1,12 +1,30 @@
 @use '../variables' as *;
 
 .products {
+  @include screen(850) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacer;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
   .product {
     background-color: $white-300;
     margin-bottom: $spacer * 3.5;
     border-radius: 8px;
-    padding: $spacer * 3.5 $spacer $spacer * 0.5;
+    padding: $spacer * 4 $spacer $spacer * 0.5;
     position: relative;
+    max-width: 290px;
+    margin-inline: auto;
+
+    @include screen(850) {
+      width: 290px;
+      margin-inline: auto;
+    }
+    @include screen(950) {
+      margin-inline: 0;
+    }
 
     & > img {
       position: absolute;

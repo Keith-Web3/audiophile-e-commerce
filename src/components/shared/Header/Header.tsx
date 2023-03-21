@@ -11,7 +11,7 @@ const Header: React.FC = function () {
     <header className="header">
       <div className="container">
         <Hamburger />
-        <img src={logo} alt="logo" />
+        <img className="logo" src={logo} alt="logo" />
         <nav>
           <NavLink
             to="/"

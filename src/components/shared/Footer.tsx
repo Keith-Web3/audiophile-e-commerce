@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom'
 
 import bestGear from '../../assets/shared/mobile/image-best-gear.jpg'
 import logo from '../../assets/shared/desktop/logo.svg'
+import facebook from '../../assets/social/facebook.svg'
+import instagram from '../../assets/social/instagram.svg'
+import twitter from '../../assets/social/twitter.svg'
 import '../../sass/shared/footer.scss'
 
 const Footer: React.FC = function () {
@@ -46,6 +49,17 @@ const Footer: React.FC = function () {
             our demo facility - we’re open 7 days a week.
           </p>
           <p className="copyright">Copyright 2021. All Rights Reserved</p>
+          <div className="social">
+            <a href="https://twitter.com/Keith_Web3">
+              <img src={facebook} alt="facebook-icon" />
+            </a>
+            <a href="https://twitter.com/Keith_Web3">
+              <img src={twitter} alt="twitter-icon" />
+            </a>
+            <a href="https://twitter.com/Keith_Web3">
+              <img src={instagram} alt="instagram-icon" />
+            </a>
+          </div>
         </div>
       </footer>
     </div>

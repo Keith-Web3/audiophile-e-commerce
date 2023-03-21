@@ -4,15 +4,35 @@
   background-color: #191919;
 
   .container {
+    max-width: 1200px;
+    margin-inline: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: $spacer;
     border-bottom: 1px solid rgba($white, 0.1);
 
+    @include screen(545) {
+      gap: $spacer * 3;
+      .logo {
+        margin-right: auto;
+      }
+    }
+    @include screen(725) {
+      .logo {
+        margin: 0;
+      }
+      .hamburger {
+        display: none;
+      }
+    }
     nav {
       display: none;
-      gap: $spacer;
+      gap: $spacer * 2;
+
+      @include screen(725) {
+        display: flex;
+      }
 
       a {
         text-decoration: none;
@@ -20,12 +40,31 @@
         color: #ffffff;
         font-weight: 700;
         transition: color 250ms linear;
+        position: relative;
+        isolation: isolate;
+
+        &::after {
+          content: '';
+          position: absolute;
+          inset: auto auto 3px 0;
+          width: 0;
+          height: 5px;
+          background-color: rgba($brown-200, 0.6);
+          z-index: -1;
+          transition: width 200ms linear;
+        }
 
         &:hover {
-          color: $brown-100;
+          &::after {
+            width: 80%;
+          }
         }
         &.active {
           color: $brown-200;
+
+          &:hover::after {
+            width: 0;
+          }
         }
       }
     }

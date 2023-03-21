@@ -1,18 +1,44 @@
 @use '../variables' as *;
 
 .homepage {
-  .container {
-    .hero-section {
-      background-image: url('../../assets/home/mobile/image-header.jpg');
-      min-height: calc(100vh - 60.6px);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: #191919;
-      background-position: center -1 * $spacer;
+  background-color: #191919;
+  .hero-section {
+    background-image: url('../../assets/home/mobile/image-header.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #191919;
+    background-position: center bottom;
+    max-width: 1200px;
+    margin-inline: auto;
+
+    @include screen(410) {
+      background-position: center bottom -3 * $spacer;
+    }
+    @include screen(545) {
+      background-image: url('../../assets/home/tablet/image-header.jpg');
+      background-position: center;
+    }
+    @include screen(900) {
+      place-content: unset;
+      align-content: center;
+      text-align: start;
+      background-origin: content center right (-9 * $spacer);
+      background-size: 120%;
+      background-image: url('../../assets/home/desktop/image-hero.jpg');
+    }
+
+    .container {
       display: grid;
       place-content: center;
       text-align: center;
+      padding: $spacer;
+      min-height: calc(100vh - 58px);
 
+      @include screen(900) {
+        place-content: unset;
+        align-content: center;
+        text-align: start;
+      }
       p:first-of-type {
         order: -1;
         font-weight: 400;
@@ -24,90 +50,176 @@
         font-weight: 500;
         color: rgba($white, 0.75);
         line-height: 25px;
-        margin-top: $spacer * 1.45;
+        margin-top: $spacer;
+      }
+      & > * {
+        max-width: 392px;
       }
       h1 {
         color: $white;
         font-size: 36px;
         line-height: 40px;
+
+        @include screen(545) {
+          font-size: 56px;
+          line-height: 58px;
+          letter-spacing: 2px;
+        }
       }
-      & > * {
-        max-width: 328px;
-      }
+
       button {
         margin-inline: auto;
         margin-top: $spacer * 1.45;
+
+        @include screen(900) {
+          margin-inline: unset;
+        }
       }
     }
-    .section-two {
-      padding: $spacer;
-      padding-top: $spacer * 4;
+  }
+  .section-two {
+    padding: $spacer;
+    padding-top: $spacer * 4;
+    background-color: $white;
 
-      .zx9 {
-        background-color: $brown-200;
-        padding: $spacer * 2 $spacer;
-        text-align: center;
-        border-radius: 8px;
-        background-image: url('../../assets//shared/mobile/waves.png');
-        background-size: 100% auto;
-        background-repeat: no-repeat;
+    .container {
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+
+    .zx9 {
+      background-color: $brown-200;
+      padding: $spacer * 2 $spacer;
+      text-align: center;
+      border-radius: 8px;
+      background-image: url('../../assets/home/mobile/waves.png');
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      position: relative;
+
+      @include screen(545) {
+        background-image: url('../../assets/home/tablet/waves.png');
+      }
+      @include screen(900) {
+        text-align: start;
+        padding-block: $spacer * 7;
+        overflow: hidden;
+        background-image: url('../../assets/home/desktop/pattern-circles.svg');
+        background-size: 700px;
+        background-position: left -8.4 * $spacer top -5 * $spacer;
+      }
+
+      & > * {
+        max-width: 349px;
+        margin-inline: auto;
+
+        @include screen(900) {
+          margin-inline: auto 5rem;
+        }
+      }
+      img {
+        width: 50%;
+        margin-bottom: $spacer * 1.5;
+
+        @include screen(545) {
+          width: min(35%, 200px);
+          content: url('../../assets/home/tablet/image-speaker-zx9.png');
+        }
+        @include screen(900) {
+          width: min(35%, 270px);
+          position: absolute;
+          inset: auto auto 0 5 * $spacer;
+          transform: translateY($spacer);
+          margin: 0;
+          content: url('../../assets/home/desktop/image-speaker-zx9.png');
+        }
+      }
+      h2 {
+        color: $white;
+        font-size: 36px;
+        line-height: 40px;
+        width: min-content;
+
+        @include screen(900) {
+          width: 349px;
+        }
+      }
+      p {
+        font-weight: 500;
+        color: rgba($white, 0.75);
+        margin-block: $spacer * 2 $spacer * 1.35;
+      }
+      button {
+        @include screen(900) {
+          transform: translateX(calc(-1 * (349px - 100%)));
+        }
+      }
+    }
+    .zx7 {
+      background-image: url(../../assets/home/mobile/image-speaker-zx7.jpg);
+      background-size: cover;
+      background-position: bottom right;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+      padding: $spacer * 4 $spacer;
+      margin-top: $spacer;
+
+      @include screen(545) {
+        background-image: url(../../assets/home/tablet/image-speaker-zx7.jpg);
+        padding-inline: $spacer * 2;
+      }
+      @include screen(800) {
+        background-image: url(../../assets/home/desktop/image-speaker-zx7.jpg);
+        padding-block: $spacer * 8;
+        padding-left: 5 * $spacer;
+      }
+
+      h2 {
+        margin-bottom: $spacer;
+      }
+    }
+    .yx1 {
+      margin-top: $spacer;
+
+      @include screen(545) {
+        display: grid;
+        grid-template: 1fr / 1fr 1fr;
+        column-gap: $spacer;
+        align-items: center;
 
         & > * {
-          max-width: 349px;
-          margin-inline: auto;
-        }
-        img {
-          width: 50%;
-          margin-bottom: $spacer * 1.5;
-        }
-        h2 {
-          color: $white;
-          font-size: 36px;
-          line-height: 40px;
-          width: min-content;
-        }
-        p {
-          font-weight: 500;
-          color: rgba($white, 0.75);
-          margin-block: $spacer * 2 $spacer * 1.35;
-        }
-        button {
-          background-color: $dark-200;
-          color: $white;
+          height: 100%;
         }
       }
-      .zx7 {
-        background-image: url(../../assets/home/mobile/image-speaker-zx7.jpg);
-        background-size: cover;
-        background-position: bottom right;
+      .img {
+        background-image: url(../../assets/home/mobile/image-earphones-yx1.jpg);
         background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding-block: $spacer * 6;
         border-radius: 8px;
-        padding: $spacer * 4 $spacer;
-        margin-top: $spacer;
 
+        @include screen(545) {
+          background-image: url(../../assets/home/tablet/image-earphones-yx1.jpg);
+        }
+      }
+      .info {
+        margin-top: $spacer;
+        padding: $spacer * 3 $spacer;
+        background-color: $white-300;
+        border-radius: 8px;
+
+        @include screen(545) {
+          margin-top: 0;
+          padding: $spacer * 4 0;
+          display: grid;
+          place-content: center;
+        }
+        @include screen(900) {
+          padding-block: $spacer * 8;
+        }
         h2 {
           margin-bottom: $spacer;
-        }
-      }
-      .yx1 {
-        margin-top: $spacer;
-        .img {
-          background-image: url(../../assets/home/mobile/image-earphones-yx1.jpg);
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
-          padding-block: $spacer * 6;
-          border-radius: 8px;
-        }
-        .info {
-          margin-top: $spacer;
-          padding: $spacer * 3 $spacer;
-          background-color: $white-300;
-          border-radius: 8px;
-
-          h2 {
-            margin-bottom: $spacer;
-          }
         }
       }
     }
