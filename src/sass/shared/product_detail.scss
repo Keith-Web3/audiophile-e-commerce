@@ -87,6 +87,19 @@
           }
         }
       }
+      .gallery {
+        img {
+          border-radius: 8px;
+          margin-bottom: $spacer;
+        }
+      }
+      .like {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-align: center;
+        margin-block: $spacer * 1.5 $spacer * 3;
+      }
     }
   }
 }

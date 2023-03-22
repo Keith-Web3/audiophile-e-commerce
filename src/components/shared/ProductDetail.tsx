@@ -82,6 +82,7 @@ const ProductDetail: React.FC<{
             <img src={gallery[1]} alt="gallery" />
             <img src={gallery[2]} alt="gallery" />
           </div>
+          <p className="like">You may also like</p>
         </section>
       </div>
     </div>

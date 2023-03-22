@@ -104,6 +104,8 @@
   a {
     text-decoration: none;
     margin-inline: auto;
+    display: block;
+    width: max-content;
 
     @include screen(900) {
       grid-area: button;
