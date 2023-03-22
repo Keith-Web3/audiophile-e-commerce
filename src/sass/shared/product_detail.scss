@@ -1,0 +1,92 @@
+@use '../variables' as *;
+
+.product-detail {
+  .container {
+    padding: $spacer;
+    .back {
+      text-transform: capitalize;
+      color: rgba($dark-200, 0.5);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    section:nth-of-type(1) {
+      img {
+        border-radius: 8px;
+        margin-top: $spacer;
+      }
+      .new-product {
+        text-transform: uppercase;
+        color: $brown-200;
+        letter-spacing: 10px;
+        margin-block: $spacer $spacer * 0.5;
+      }
+      h2 {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 38px;
+        letter-spacing: 1px;
+      }
+      .desc {
+        color: rgba($dark-200, 0.5);
+        line-height: 25px;
+        font-weight: 500;
+        margin-top: $spacer * 0.5;
+      }
+      .price {
+        font-weight: 700;
+        letter-spacing: 1.3px;
+        font-size: 1.1rem;
+        margin-block: $spacer * 0.7 $spacer;
+      }
+      .cart {
+        display: flex;
+        gap: $spacer;
+
+        &__increment {
+          display: flex;
+          align-items: center;
+          gap: $spacer * 2.5;
+          background-color: $white-300;
+          padding: $spacer;
+
+          p {
+            font-weight: 700;
+          }
+          .btn {
+            color: rgba($dark-200, 0.25);
+            cursor: pointer;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+    section:nth-of-type(2) {
+      margin-top: $spacer * 2;
+
+      .features {
+        h3 {
+          font-size: 1.5rem;
+          text-transform: uppercase;
+        }
+        p {
+          color: rgba($dark-200, 0.5);
+          font-weight: 500;
+          line-height: 28px;
+          margin-top: $spacer;
+        }
+      }
+      .box {
+        @extend .features;
+        margin-block: $spacer * 2 $spacer * 4;
+
+        .items_details {
+          span {
+            color: $brown-200;
+            margin-right: $spacer * 0.75;
+          }
+        }
+      }
+    }
+  }
+}

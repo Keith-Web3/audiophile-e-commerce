@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
 import Button from '../UI/Button'
+import '../../sass/shared/product_detail.scss'
 
 const ProductDetail: React.FC<{
   img: string
   newProduct?: boolean
   title: string
   desc: string
-  price: number
+  price: string
   features: [string, string]
   box: [number, string][]
   gallery: [string, string, string]
@@ -28,24 +29,28 @@ const ProductDetail: React.FC<{
   return (
     <div className="product-detail">
       <div className="container">
-        <Link to="..">go back</Link>
+        <Link className="back" to="..">
+          go back
+        </Link>
         <section>
           <img src={img} alt={title} />
           {newProduct && <p className="new-product">new product</p>}
           <h2>{title}</h2>
-          <p>{desc}</p>
-          <p>${price}</p>
+          <p className="desc">{desc}</p>
+          <p className="price">{price}</p>
           <div className="cart">
             <div className="cart__increment">
               <p
+                className="btn"
                 onClick={() => {
                   setCartItems(val => (val === 1 ? val : val - 1))
                 }}
               >
                 -
               </p>
-              <p>{cartItems}</p>
+              <p className="count">{cartItems}</p>
               <p
+                className="btn"
                 onClick={() => {
                   setCartItems(val => val + 1)
                 }}
@@ -66,8 +71,8 @@ const ProductDetail: React.FC<{
             <h3>in the box</h3>
             <div className="items">
               {box.map(el => (
-                <p key={nanoid()}>
-                  {el[0]}x {el[1]}
+                <p key={nanoid()} className="items_details">
+                  <span>{el[0]}x</span> {el[1]}
                 </p>
               ))}
             </div>
