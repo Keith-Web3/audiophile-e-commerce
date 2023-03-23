@@ -4,6 +4,7 @@ import speaker from '../../assets/home/mobile/image-speaker-zx9.png'
 import Button from '../UI/Button'
 import Products from '../shared/Products'
 import '../../sass/pages/homepage.scss'
+import { Link } from 'react-router-dom'
 
 const Homepage: React.FC = function () {
   return (
@@ -16,7 +17,9 @@ const Homepage: React.FC = function () {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <Button className="button-one">see product</Button>
+          <Link to="headphones/x992-mark-two">
+            <Button className="button-one">see product</Button>
+          </Link>
         </div>
       </section>
       <section className="section-two">
@@ -29,17 +32,23 @@ const Homepage: React.FC = function () {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <Button className="button-four">see product</Button>
+            <Link to="speakers/zx9-speaker">
+              <Button className="button-four">see product</Button>
+            </Link>
           </div>
           <div className="zx7">
             <h2>ZX7 SPEAKER</h2>
-            <Button className="button-two">see product</Button>
+            <Link to="speakers/zx7-speaker">
+              <Button className="button-two">see product</Button>
+            </Link>
           </div>
           <div className="yx1">
             <div className="img"></div>
             <div className="info">
               <h2>YX1 EARPHONES</h2>
-              <Button className="button-two">see product</Button>
+              <Link to="earphones/yx1-earphone">
+                <Button className="button-two">see product</Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -11,23 +11,13 @@
     }
   }
   @include screen(545) {
-    &.yx1 img {
-      content: url('../../assets/product-yx1-earphones/tablet/image-category-page-preview.jpg');
-    }
-    &.zx7 img {
-      content: url('../../assets/product-zx7-speaker/tablet/image-category-page-preview.jpg');
-    }
-    &.zx9 img {
-      content: url('../../assets/product-zx9-speaker/tablet/image-category-page-preview.jpg');
-    }
-    &.x992 img {
-      content: url('../../assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg');
-    }
-    &.x991 img {
-      content: url('../../assets/product-xx99-mark-one-headphones/tablet/image-category-page-preview.jpg');
-    }
-    &.x59 img {
-      content: url('../../assets/product-xx59-headphones/tablet/image-category-page-preview.jpg');
+    @each $device in $devices {
+      &.#{nth($device, 1)} img {
+        content: url('../../assets/product-' + nth(
+            $device,
+            2
+          ) + '/tablet/image-category-page-preview.jpg');
+      }
     }
   }
   @include screen(900) {
@@ -42,23 +32,13 @@
     &:nth-of-type(2n) {
       grid-template-areas: '. img' 'new-product img' 'header img' 'desc img' 'button img' '. img';
     }
-    &.yx1 img {
-      content: url('../../assets/product-yx1-earphones/desktop/image-category-page-preview.jpg');
-    }
-    &.zx7 img {
-      content: url('../../assets/product-zx7-speaker/desktop/image-category-page-preview.jpg');
-    }
-    &.zx9 img {
-      content: url('../../assets/product-zx9-speaker/desktop/image-category-page-preview.jpg');
-    }
-    &.x992 img {
-      content: url('../../assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg');
-    }
-    &.x991 img {
-      content: url('../../assets/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg');
-    }
-    &.x59 img {
-      content: url('../../assets/product-xx59-headphones/desktop/image-category-page-preview.jpg');
+    @each $device in $devices {
+      &.#{nth($device, 1)} img {
+        content: url('../../assets/product-' + nth(
+            $device,
+            2
+          ) + '/desktop/image-category-page-preview.jpg');
+      }
     }
   }
   .new-product {

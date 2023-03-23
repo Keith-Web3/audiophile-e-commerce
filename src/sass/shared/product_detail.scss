@@ -3,6 +3,9 @@
 .product-detail {
   .container {
     padding: $spacer;
+    max-width: 1200px;
+    margin-inline: auto;
+
     .back {
       text-transform: capitalize;
       color: rgba($dark-200, 0.5);
@@ -10,6 +13,65 @@
       font-weight: 500;
     }
 
+    @include screen(545) {
+      section:nth-of-type(1) {
+        display: grid;
+        grid-template: 1fr repeat(5, auto) 1fr / repeat(2, 1fr);
+        grid-template-areas: 'img .' 'img new-product' 'img header' 'img desc' 'img price' 'img buttons' 'img .';
+        text-align: start;
+        column-gap: $spacer * 2;
+
+        h2 {
+          grid-area: header;
+        }
+        .new-product {
+          grid-area: new-product;
+        }
+        .desc {
+          grid-area: desc;
+        }
+        .price {
+          grid-area: price;
+        }
+        .cart {
+          grid-area: buttons;
+        }
+      }
+      @each $device in $devices {
+        &.#{nth($device, 1)} {
+          section:nth-of-type(1) img {
+            grid-area: img;
+            content: url('../../assets/product-' + nth(
+                $device,
+                2
+              ) + '/tablet/image-product.jpg');
+          }
+        }
+      }
+    }
+    @include screen(900) {
+      section:nth-of-type(1) {
+        h2 {
+          font-size: 40px;
+          line-height: 44px;
+          letter-spacing: 1.42857px;
+        }
+        .desc {
+          font-size: 1.075rem;
+          line-height: 30px;
+        }
+      }
+      @each $device in $devices {
+        &.#{nth($device, 1)} {
+          section:nth-of-type(1) img {
+            content: url('../../assets/product-' + nth(
+                $device,
+                2
+              ) + '/desktop/image-product.jpg');
+          }
+        }
+      }
+    }
     section:nth-of-type(1) {
       img {
         border-radius: 8px;
@@ -57,6 +119,7 @@
             color: rgba($dark-200, 0.25);
             cursor: pointer;
             font-size: 1.2rem;
+            user-select: none;
           }
         }
       }
@@ -75,12 +138,41 @@
           line-height: 28px;
           margin-top: $spacer;
         }
+        @include screen(900) {
+          max-width: 692px;
+        }
       }
       .box {
         @extend .features;
         margin-block: $spacer * 2 $spacer * 4;
 
+        @include screen(545) {
+          display: flex;
+          align-items: baseline;
+          .items {
+            flex-grow: 1;
+            display: grid;
+            place-content: center;
+          }
+        }
+
+        @include screen(900) {
+          display: grid;
+          margin-top: 0;
+          place-content: center;
+        }
+
         .items_details {
+          @include screen(545) {
+            &:first-child {
+              margin-top: 0;
+            }
+          }
+          @include screen(900) {
+            &:first-child {
+              margin-top: $spacer;
+            }
+          }
           span {
             color: $brown-200;
             margin-right: $spacer * 0.75;
@@ -91,6 +183,48 @@
         img {
           border-radius: 8px;
           margin-bottom: $spacer;
+          height: 100%;
+          @include screen(545) {
+            margin: 0;
+            @each $device in $devices {
+              @for $i from 1 through 3 {
+                &.#{nth($device, 1)}G#{$i} {
+                  content: url('../../assets/product-' + nth(
+                      $device,
+                      2
+                    ) + '/tablet/image-gallery-' + $i + '.jpg');
+                }
+              }
+            }
+            &:first-child {
+              grid-area: img1;
+            }
+            &:nth-child(2) {
+              grid-area: img2;
+            }
+            &:last-child {
+              grid-area: img3;
+            }
+          }
+          @include screen(900) {
+            height: 100%;
+            @each $device in $devices {
+              @for $i from 1 through 3 {
+                &.#{nth($device, 1)}G#{$i} {
+                  content: url('../../assets/product-' + nth(
+                      $device,
+                      2
+                    ) + '/desktop/image-gallery-' + $i + '.jpg');
+                }
+              }
+            }
+          }
+        }
+        @include screen(545) {
+          display: grid;
+          grid-template: repeat(2, 1fr) / 1fr 1.426fr;
+          grid-template-areas: 'img1 img3' 'img2 img3';
+          gap: $spacer;
         }
       }
       .like {
@@ -99,6 +233,17 @@
         font-size: 1.2rem;
         text-align: center;
         margin-block: $spacer * 1.5 $spacer * 3;
+      }
+      .children {
+        @include screen(900) {
+          display: grid;
+          grid-template-columns: minmax(auto, max-content) minmax(
+              max-content,
+              1fr
+            );
+          column-gap: $spacer * 2;
+          margin-bottom: $spacer * 2;
+        }
       }
     }
   }

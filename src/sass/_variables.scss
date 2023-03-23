@@ -6,6 +6,9 @@ $white-200: #fafafa;
 $white-300: #f1f1f1;
 $dark-100: #101010;
 $dark-200: #000000;
+$devices: (yx1, yx1-earphones), (zx7, zx7-speaker), (zx9, zx9-speaker),
+  (x992, xx99-mark-two-headphones), (x991, xx99-mark-one-headphones),
+  (x59, xx59-headphones);
 
 @mixin screen($size) {
   @media (min-width: #{$size}px) {

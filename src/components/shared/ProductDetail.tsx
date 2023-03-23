@@ -13,7 +13,8 @@ const ProductDetail: React.FC<{
   price: string
   features: [string, string]
   box: [number, string][]
-  gallery: [string, string, string]
+  gallery: [[string, string], [string, string], [string, string]]
+  className: string
 }> = function ({
   img,
   newProduct = false,
@@ -23,13 +24,14 @@ const ProductDetail: React.FC<{
   features,
   box,
   gallery,
+  className,
 }) {
   const [cartItems, setCartItems] = useState(1)
 
   return (
     <div className="product-detail">
-      <div className="container">
-        <Link className="back" to="..">
+      <div className={`container ${className}`}>
+        <Link className="back" to=".." relative="path">
           go back
         </Link>
         <section>
@@ -62,25 +64,27 @@ const ProductDetail: React.FC<{
           </div>
         </section>
         <section>
-          <div className="features">
-            <h3>Features</h3>
-            <p>{features[0]}</p>
-            <p>{features[1]}</p>
-          </div>
-          <div className="box">
-            <h3>in the box</h3>
-            <div className="items">
-              {box.map(el => (
-                <p key={nanoid()} className="items_details">
-                  <span>{el[0]}x</span> {el[1]}
-                </p>
-              ))}
+          <div className="children">
+            <div className="features">
+              <h3>Features</h3>
+              <p>{features[0]}</p>
+              <p>{features[1]}</p>
+            </div>
+            <div className="box">
+              <h3>in the box</h3>
+              <div className="items">
+                {box.map(el => (
+                  <p key={nanoid()} className="items_details">
+                    <span>{el[0]}x</span> {el[1]}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
           <div className="gallery">
-            <img src={gallery[0]} alt="gallery" />
-            <img src={gallery[1]} alt="gallery" />
-            <img src={gallery[2]} alt="gallery" />
+            <img className={gallery[0][1]} src={gallery[0][0]} alt="gallery" />
+            <img className={gallery[1][1]} src={gallery[1][0]} alt="gallery" />
+            <img className={gallery[2][1]} src={gallery[2][0]} alt="gallery" />
           </div>
           <p className="like">You may also like</p>
         </section>

@@ -11,8 +11,9 @@ import CategoryLayout from './components/Layouts/CategoryLayout'
 import EarPhones from './components/pages/EarPhones'
 import HeadPhones from './components/pages/HeadPhones'
 import Homepage from './components/pages/Homepage'
-import ProductDetailH1 from './components/pages/ProductDetailH1'
 import Speakers from './components/pages/Speakers'
+import ProductDetail from './components/shared/ProductDetail'
+import data from './components/Data/data'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +25,30 @@ const router = createBrowserRouter(
         <Route path="earphones" element={<EarPhones />} />
       </Route>
       <Route element={<ProductDetailsLayout />}>
-        <Route path="xx99" element={<ProductDetailH1 />} />
+        <Route
+          path="headphones/x992-mark-two"
+          element={<ProductDetail {...data[0]} />}
+        />
+        <Route
+          path="headphones/x992-mark-one"
+          element={<ProductDetail {...data[1]} />}
+        />
+        <Route
+          path="headphones/x59-headphone"
+          element={<ProductDetail {...data[2]} />}
+        />
+        <Route
+          path="speakers/zx9-speaker"
+          element={<ProductDetail {...data[3]} />}
+        />
+        <Route
+          path="speakers/zx7-speaker"
+          element={<ProductDetail {...data[4]} />}
+        />
+        <Route
+          path="earphones/yx1-earphone"
+          element={<ProductDetail {...data[5]} />}
+        />
       </Route>
     </Route>
   )

@@ -40,6 +40,9 @@
         text-align: start;
         min-height: calc(100vh - 58px);
       }
+      a {
+        text-decoration: none;
+      }
       p:first-of-type {
         order: -1;
         font-weight: 400;
@@ -88,6 +91,9 @@
       margin-inline: auto;
     }
 
+    a {
+      text-decoration: none;
+    }
     .zx9 {
       background-color: $brown-200;
       padding: $spacer * 2 $spacer;
@@ -150,7 +156,8 @@
         color: rgba($white, 0.75);
         margin-block: $spacer * 2 $spacer * 1.35;
       }
-      button {
+      a {
+        display: block;
         @include screen(900) {
           transform: translateX(calc(-1 * (349px - 100%)));
         }
