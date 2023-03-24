@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, To, useNavigate } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
 import Button from '../UI/Button'
 import '../../sass/shared/product_detail.scss'
+import Likes from './Likes'
 
 const ProductDetail: React.FC<{
   img: string
@@ -15,6 +16,11 @@ const ProductDetail: React.FC<{
   box: [number, string][]
   gallery: [[string, string], [string, string], [string, string]]
   className: string
+  likes: [
+    [string, string, string, string],
+    [string, string, string, string],
+    [string, string, string, string]
+  ]
 }> = function ({
   img,
   newProduct = false,
@@ -25,15 +31,20 @@ const ProductDetail: React.FC<{
   box,
   gallery,
   className,
+  likes,
 }) {
   const [cartItems, setCartItems] = useState(1)
+  const navigate = useNavigate()
 
   return (
     <div className="product-detail">
       <div className={`container ${className}`}>
-        <Link className="back" to=".." relative="path">
+        <p
+          className="back"
+          onClick={() => navigate(-1 as To, { replace: true })}
+        >
           go back
-        </Link>
+        </p>
         <section>
           <img src={img} alt={title} />
           {newProduct && <p className="new-product">new product</p>}
@@ -87,6 +98,11 @@ const ProductDetail: React.FC<{
             <img className={gallery[2][1]} src={gallery[2][0]} alt="gallery" />
           </div>
           <p className="like">You may also like</p>
+          <div className="likes">
+            {likes.map(like => (
+              <Likes key={nanoid()} data={like} />
+            ))}
+          </div>
         </section>
       </div>
     </div>

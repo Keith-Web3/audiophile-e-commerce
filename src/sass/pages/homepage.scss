@@ -118,6 +118,7 @@
 
       & > * {
         max-width: 349px;
+        width: max-content;
         margin-inline: auto;
 
         @include screen(900) {

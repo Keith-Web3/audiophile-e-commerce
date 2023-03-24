@@ -2,22 +2,27 @@ import x992 from '../../assets/product-xx99-mark-two-headphones/mobile/image-pro
 import x992G1 from '../../assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg'
 import x992G2 from '../../assets/product-xx99-mark-two-headphones/mobile/image-gallery-2.jpg'
 import x992G3 from '../../assets/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg'
+import x992L from '../../assets/shared/mobile/image-xx99-mark-two-headphones.jpg'
 import x991 from '../../assets/product-xx99-mark-one-headphones/mobile/image-product.jpg'
 import x991G1 from '../../assets/product-xx99-mark-one-headphones/mobile/image-gallery-1.jpg'
 import x991G2 from '../../assets/product-xx99-mark-one-headphones/mobile/image-gallery-2.jpg'
 import x991G3 from '../../assets/product-xx99-mark-one-headphones/mobile/image-gallery-3.jpg'
+import x991L from '../../assets/shared/mobile/image-xx99-mark-one-headphones.jpg'
 import x59 from '../../assets/product-xx59-headphones/mobile/image-product.jpg'
 import x59G1 from '../../assets/product-xx59-headphones/mobile/image-gallery-1.jpg'
 import x59G2 from '../../assets/product-xx59-headphones/mobile/image-gallery-2.jpg'
 import x59G3 from '../../assets/product-xx59-headphones/mobile/image-gallery-3.jpg'
+import x59L from '../../assets/shared/mobile/image-xx59-headphones.jpg'
 import zx9 from '../../assets/product-zx9-speaker/mobile/image-product.jpg'
 import zx9G1 from '../../assets/product-zx9-speaker/mobile/image-gallery-1.jpg'
 import zx9G2 from '../../assets/product-zx9-speaker/mobile/image-gallery-2.jpg'
 import zx9G3 from '../../assets/product-zx9-speaker/mobile/image-gallery-3.jpg'
+import zx9L from '../../assets/shared/mobile/image-zx9-speaker.jpg'
 import zx7 from '../../assets/product-zx7-speaker/mobile/image-product.jpg'
 import zx7G1 from '../../assets/product-zx7-speaker/mobile/image-gallery-1.jpg'
 import zx7G2 from '../../assets/product-zx7-speaker/mobile/image-gallery-2.jpg'
 import zx7G3 from '../../assets/product-zx7-speaker/mobile/image-gallery-3.jpg'
+import zx7L from '../../assets/shared/mobile/image-zx7-speaker.jpg'
 import yx1 from '../../assets/product-yx1-earphones/mobile/image-product.jpg'
 import yx1G1 from '../../assets/product-yx1-earphones/mobile/image-gallery-1.jpg'
 import yx1G2 from '../../assets/product-yx1-earphones/mobile/image-gallery-2.jpg'
@@ -33,6 +38,11 @@ interface Data {
   box: [number, string][]
   gallery: [[string, string], [string, string], [string, string]]
   className: string
+  likes: [
+    [string, string, string, string],
+    [string, string, string, string],
+    [string, string, string, string]
+  ]
 }
 
 const data: Data[] = [
@@ -59,6 +69,11 @@ const data: Data[] = [
       [x992G2, 'x992G2'],
       [x992G3, 'x992G3'],
     ],
+    likes: [
+      [x991L, 'x991', 'XX99 MARK I', 'headphones/x992-mark-one'],
+      [x59L, 'x59', 'XX59', 'headphones/x59-headphone'],
+      [zx9L, 'zx9', 'ZX9 SPEAKER', 'speakers/zx9-speaker'],
+    ],
   },
   {
     img: x991,
@@ -81,6 +96,11 @@ const data: Data[] = [
       [x991G2, 'x991G2'],
       [x991G3, 'x991G3'],
     ],
+    likes: [
+      [x992L, 'x992', 'XX99 MARK II', 'headphones/x992-mark-two'],
+      [x59L, 'x59', 'XX59', 'headphones/x59-headphone'],
+      [zx9L, 'zx9', 'ZX9 SPEAKER', 'speakers/zx9-speaker'],
+    ],
   },
   {
     img: x59,
@@ -102,6 +122,11 @@ const data: Data[] = [
       [x59G1, 'x59G1'],
       [x59G2, 'x59G2'],
       [x59G3, 'x59G3'],
+    ],
+    likes: [
+      [x992L, 'x992', 'XX99 MARK II', 'headphones/x992-mark-two'],
+      [x991L, 'x991', 'XX99 MARK I', 'headphones/x992-mark-one'],
+      [zx9L, 'zx9', 'ZX9 SPEAKER', 'speakers/zx9-speaker'],
     ],
   },
   {
@@ -126,6 +151,11 @@ const data: Data[] = [
       [zx9G2, 'zx9G2'],
       [zx9G3, 'zx9G3'],
     ],
+    likes: [
+      [zx7L, 'zx7', 'ZX7 SPEAKER', 'speakers/zx7-speaker'],
+      [x991L, 'x991', 'XX99 MARK I', 'headphones/x992-mark-one'],
+      [x59L, 'x59', 'XX59', 'headphones/x59-headphone'],
+    ],
   },
   {
     img: zx7,
@@ -149,6 +179,11 @@ const data: Data[] = [
       [zx7G2, 'zx7G2'],
       [zx7G3, 'zx7G3'],
     ],
+    likes: [
+      [zx9L, 'zx9', 'ZX9 SPEAKER', 'speakers/zx9-speaker'],
+      [x991L, 'x991', 'XX99 MARK I', 'headphones/x992-mark-one'],
+      [x59L, 'x59', 'XX59', 'headphones/x59-headphone'],
+    ],
   },
   {
     img: yx1,
@@ -171,6 +206,11 @@ const data: Data[] = [
       [yx1G1, 'yx1G1'],
       [yx1G2, 'yx1G2'],
       [yx1G3, 'yx1G3'],
+    ],
+    likes: [
+      [x992L, 'x992', 'XX99 MARK II', 'headphones/x992-mark-two'],
+      [x59L, 'x59', 'XX59', 'headphones/x59-headphone'],
+      [zx9L, 'zx9', 'ZX9 SPEAKER', 'speakers/zx9-speaker'],
     ],
   },
 ]

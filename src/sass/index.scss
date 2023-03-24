@@ -1,5 +1,10 @@
 @use 'resets';
+@use 'variables' as v;
 
+body,
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Manrope', 'Nunito', Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -8,7 +13,29 @@ img:not(header img) {
 }
 #root {
   display: grid;
+  position: relative;
   .header {
     order: -1;
+  }
+}
+.drop-down {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  .products {
+    width: 100%;
+    background-color: v.$white;
+    padding-block: v.$spacer * 8.5 v.$spacer;
+    position: relative;
+    z-index: 1;
+  }
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(v.$dark-200, 0.4);
+    backdrop-filter: blur(1px);
+  }
+  @include v.screen(725) {
+    display: none !important;
   }
 }

@@ -3,11 +3,12 @@ import { motion } from 'framer-motion'
 
 import '../../sass/ui/hamburger.scss'
 
-const Hamburger: React.FC = function () {
-  const [isOpen, setIsOpen] = useState('closed')
-
+const Hamburger: React.FC<{
+  isNavOpen: 'open' | 'closed'
+  setIsNavOpen: React.Dispatch<React.SetStateAction<'open' | 'closed'>>
+}> = function ({ isNavOpen, setIsNavOpen }) {
   const toggleMenu = function () {
-    setIsOpen(prevValue => (prevValue === 'open' ? 'closed' : 'open'))
+    setIsNavOpen(prevValue => (prevValue === 'open' ? 'closed' : 'open'))
   }
 
   const variants = [
@@ -50,7 +51,11 @@ const Hamburger: React.FC = function () {
   return (
     <div className="hamburger" onClick={toggleMenu}>
       {variants.map((variant, idx) => (
-        <motion.div variants={variant} animate={isOpen} key={idx}></motion.div>
+        <motion.div
+          variants={variant}
+          animate={isNavOpen}
+          key={idx}
+        ></motion.div>
       ))}
     </div>
   )

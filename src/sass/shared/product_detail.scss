@@ -11,6 +11,7 @@
       color: rgba($dark-200, 0.5);
       text-decoration: none;
       font-weight: 500;
+      cursor: pointer;
     }
 
     @include screen(545) {
@@ -75,7 +76,11 @@
     section:nth-of-type(1) {
       img {
         border-radius: 8px;
-        margin-top: $spacer;
+        margin-block: $spacer;
+
+        @include screen(545) {
+          margin-bottom: 0;
+        }
       }
       .new-product {
         text-transform: uppercase;
@@ -232,7 +237,17 @@
         font-weight: 700;
         font-size: 1.2rem;
         text-align: center;
-        margin-block: $spacer * 1.5 $spacer * 3;
+        margin-block: $spacer * 3 $spacer * 1.5;
+      }
+      .likes {
+        margin-bottom: $spacer * 6;
+
+        @include screen(545) {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          column-gap: $spacer;
+          margin-bottom: $spacer * 4;
+        }
       }
       .children {
         @include screen(900) {

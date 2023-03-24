@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { MouseEventHandler, ReactNode } from 'react'
 import { motion } from 'framer-motion'
 
 import '../../sass/ui/buttons.scss'
@@ -6,9 +6,10 @@ import '../../sass/ui/buttons.scss'
 interface Props {
   className: 'button-one' | 'button-two' | 'button-three' | 'button-four'
   children: ReactNode
+  onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
-const Button: React.FC<Props> = function ({ className, children, ...props }) {
+const Button: React.FC<Props> = function ({ className, children, onClick }) {
   const hoverVariant = {
     color: className === 'button-three' ? '#D87D4A' : '#FFFFFF',
     backgroundColor:
@@ -25,7 +26,7 @@ const Button: React.FC<Props> = function ({ className, children, ...props }) {
       key={className}
       whileHover={hoverVariant}
       className={`buttons ${className}`}
-      {...props}
+      onClick={onClick || (() => {})}
     >
       {children}
     </motion.button>

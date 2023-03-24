@@ -6,11 +6,14 @@ import logo from '../../../assets/shared/desktop/logo.svg'
 import Hamburger from '../../UI/Hamburger'
 import '../../../sass/shared/header/header.scss'
 
-const Header: React.FC = function () {
+const Header: React.FC<{
+  isNavOpen: 'open' | 'closed'
+  setIsNavOpen: React.Dispatch<React.SetStateAction<'open' | 'closed'>>
+}> = function ({ isNavOpen, setIsNavOpen }) {
   return (
     <header className="header">
       <div className="container">
-        <Hamburger />
+        <Hamburger isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
         <img className="logo" src={logo} alt="logo" />
         <nav>
           <NavLink

@@ -1,0 +1,56 @@
+@use '../variables' as *;
+
+.product-likes {
+  margin-bottom: $spacer * 3;
+  @include screen(545) {
+    margin-bottom: 0;
+  }
+  a {
+    display: block;
+    text-decoration: none;
+  }
+  img {
+    border-radius: 8px;
+
+    @include screen(545) {
+      @each $device in $devices {
+        &.#{nth($device, 1)} {
+          content: url('../../assets/shared/tablet/image-' + nth(
+              $device,
+              2
+            ) + '.jpg');
+        }
+      }
+    }
+    @include screen(900) {
+      @each $device in $devices {
+        &.#{nth($device, 1)} {
+          content: url('../../assets/shared/desktop/image-' + nth(
+              $device,
+              2
+            ) + '.jpg');
+        }
+      }
+    }
+  }
+  p {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-block: $spacer * 1.2;
+  }
+  p,
+  a {
+    width: max-content;
+    margin-inline: auto;
+  }
+}
+// @each $device in $devices {
+//   @for $i from 1 through 3 {
+//     &.#{nth($device, 1)}G#{$i} {
+//       content: url('../../assets/product-' + nth(
+//           $device,
+//           2
+//         ) + '/desktop/image-gallery-' + $i + '.jpg');
+//     }
+//   }
+// }

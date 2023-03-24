@@ -8,6 +8,12 @@
     max-width: 1200px;
     margin-inline: auto;
     padding: $spacer;
+
+    @include screen(545) {
+      & > .container {
+        margin-top: $spacer * 4;
+      }
+    }
   }
 
   .hero-section {
