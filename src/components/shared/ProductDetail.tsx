@@ -41,11 +41,13 @@ const ProductDetail: React.FC<{
   const navigate = useNavigate()
   const ctx = useContext(CartContext)
 
+  console.log(img)
   const cartImgUrl = `/src/assets/cart/image-${img
-    .split('/')[3]
+    ?.split('/')[3]
     .split('-')
     .slice(1)
     .join('-')}.jpg`
+  console.log(cartImgUrl)
 
   return (
     <div className="product-detail">
