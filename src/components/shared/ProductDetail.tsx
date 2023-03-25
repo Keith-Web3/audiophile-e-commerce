@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useMemo } from 'react'
+import React, { useState, useContext } from 'react'
 import { To, useNavigate } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
@@ -6,7 +6,7 @@ import Button from '../UI/Button'
 import '../../sass/shared/product_detail.scss'
 import Likes from './Likes'
 import CartContext from '../store/CartContextProvider'
-import bhfrv from '../../assets/cart/image-zx9-speaker.jpg'
+import { cartImages } from '../Data/data'
 
 const ProductDetail: React.FC<{
   img: string
@@ -41,19 +41,7 @@ const ProductDetail: React.FC<{
   const navigate = useNavigate()
   const ctx = useContext(CartContext)
 
-  let cartImgUrl: string
-
-  useEffect(() => {
-    import(
-      `../../assets/cart/image-${img
-        ?.split('/')[3]
-        .split('-')
-        .slice(1)
-        .join('-')}.jpg`
-    ).then(mod => {
-      cartImgUrl = mod.default
-    })
-  }, [cartItems])
+  const cartImgUrl = cartImages.find(el => el[0] === className)![1]
 
   return (
     <div className="product-detail">

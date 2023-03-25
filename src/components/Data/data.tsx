@@ -28,6 +28,13 @@ import yx1G1 from '../../assets/product-yx1-earphones/mobile/image-gallery-1.jpg
 import yx1G2 from '../../assets/product-yx1-earphones/mobile/image-gallery-2.jpg'
 import yx1G3 from '../../assets/product-yx1-earphones/mobile/image-gallery-3.jpg'
 
+import cartImg1 from '../../assets/cart/image-xx99-mark-one-headphones.jpg'
+import cartImg2 from '../../assets/cart/image-xx99-mark-two-headphones.jpg'
+import cartImg3 from '../../assets/cart/image-xx59-headphones.jpg'
+import cartImg4 from '../../assets/cart/image-yx1-earphones.jpg'
+import cartImg5 from '../../assets/cart/image-zx7-speaker.jpg'
+import cartImg6 from '../../assets/cart/image-zx9-speaker.jpg'
+
 interface Data {
   img: string
   newProduct?: boolean
@@ -45,6 +52,15 @@ interface Data {
     [string, string, string, string]
   ]
 }
+
+export const cartImages = [
+  ['x991', cartImg1],
+  ['x992', cartImg2],
+  ['x59', cartImg3],
+  ['yx1', cartImg4],
+  ['zx7', cartImg5],
+  ['zx9', cartImg6],
+]
 
 const data: Data[] = [
   {
