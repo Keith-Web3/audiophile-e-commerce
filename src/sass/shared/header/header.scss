@@ -28,6 +28,9 @@
         display: none;
       }
     }
+    .cartIcon {
+      cursor: pointer;
+    }
     nav {
       display: none;
       gap: $spacer * 2;

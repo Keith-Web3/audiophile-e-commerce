@@ -1,0 +1,126 @@
+@use '../variables' as *;
+
+.cart-main {
+  position: absolute;
+  inset: 0;
+  padding: $spacer;
+
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba($dark-200, 0.5);
+  }
+}
+.cart__container {
+  width: max-content;
+  padding: $spacer * 1.5;
+  border-radius: 8px;
+  position: relative;
+  z-index: 2;
+  background-color: $white;
+  margin-top: $spacer * 5;
+  margin-left: auto;
+  .cart__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      &:first-child {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.1rem;
+        letter-spacing: 1.3px;
+      }
+      &:last-child {
+        font-weight: 500;
+        color: rgba($dark-200, 0.5);
+        cursor: pointer;
+      }
+    }
+  }
+  .empty {
+    color: rgba($dark-200, 0.5);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-block: $spacer * 2;
+  }
+  .cart__item {
+    display: grid;
+    grid-template: repeat(2, auto) / 64px 1fr max-content;
+    grid-template-areas: 'img name btn' 'img price btn';
+    align-items: center;
+    column-gap: $spacer * 1.5;
+    margin-bottom: $spacer;
+
+    &:first-of-type {
+      margin-top: $spacer * 2;
+    }
+    &:last-of-type {
+      margin-bottom: $spacer * 2;
+    }
+
+    img {
+      grid-area: img;
+      border-radius: 8px;
+    }
+    .name {
+      grid-area: name;
+      font-weight: 700;
+    }
+    .price {
+      grid-area: price;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: rgba($dark-200, 0.5);
+    }
+    .cart__btn {
+      grid-area: btn;
+      display: flex;
+      align-items: center;
+      gap: $spacer * 2.5;
+      background-color: $white-300;
+      padding: $spacer;
+      width: max-content;
+      border-radius: 8px;
+
+      p {
+        font-weight: 700;
+      }
+      .btn {
+        color: rgba($dark-200, 0.25);
+        cursor: pointer;
+        font-size: 1.2rem;
+        user-select: none;
+      }
+    }
+  }
+  .total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacer;
+
+    span {
+      &:first-child {
+        font-weight: 700;
+        color: rgba($dark-200, 0.5);
+        text-transform: uppercase;
+      }
+      &:last-child {
+        font-weight: 700;
+      }
+    }
+  }
+  button {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 500;
+
+    &:disabled {
+      background-color: #4c4c4c !important;
+      cursor: not-allowed;
+    }
+  }
+}

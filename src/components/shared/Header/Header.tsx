@@ -9,7 +9,8 @@ import '../../../sass/shared/header/header.scss'
 const Header: React.FC<{
   isNavOpen: 'open' | 'closed'
   setIsNavOpen: React.Dispatch<React.SetStateAction<'open' | 'closed'>>
-}> = function ({ isNavOpen, setIsNavOpen }) {
+  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
+}> = function ({ isNavOpen, setIsNavOpen, setIsCartOpen }) {
   return (
     <header className="header">
       <div className="container">
@@ -42,7 +43,12 @@ const Header: React.FC<{
             earphones
           </NavLink>
         </nav>
-        <img src={cartIcon} alt="cart" />
+        <img
+          onClick={() => setIsCartOpen(prev => !prev)}
+          className="cartIcon"
+          src={cartIcon}
+          alt="cart"
+        />
       </div>
     </header>
   )

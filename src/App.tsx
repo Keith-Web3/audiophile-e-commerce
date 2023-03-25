@@ -14,10 +14,11 @@ import Homepage from './components/pages/Homepage'
 import Speakers from './components/pages/Speakers'
 import ProductDetail from './components/shared/ProductDetail'
 import data from './components/Data/data'
+import PageNotFound from './components/pages/PageNotFound'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<HomeLayout />}>
+    <Route path="/" element={<HomeLayout />} errorElement={<PageNotFound />}>
       <Route index element={<Homepage />} />
       <Route element={<CategoryLayout />}>
         <Route path="speakers" element={<Speakers />} />

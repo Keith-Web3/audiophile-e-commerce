@@ -1,0 +1,18 @@
+@use '../variables' as *;
+
+.page-not-found {
+  background-image: url(../../assets/shared/_Keith_Realistic_3D_wanderer_entering_a_land_which_has_a_dashbo_0af96dee-f04e-4f19-a555-6e59f5ce1e22.png);
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: $spacer;
+  display: grid;
+  align-content: bottom;
+
+  &__header {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #71514f;
+  }
+}

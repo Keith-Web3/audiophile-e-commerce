@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
-import { Link, To, useNavigate } from 'react-router-dom'
+import React, { useState, useContext, useEffect } from 'react'
+import { To, useNavigate } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
 import Button from '../UI/Button'
 import '../../sass/shared/product_detail.scss'
 import Likes from './Likes'
+import CartContext from '../store/CartContextProvider'
+import bhfrv from '../../assets/cart/image-zx9-speaker.jpg'
 
 const ProductDetail: React.FC<{
   img: string
   newProduct?: boolean
   title: string
+  cartTitle: string
   desc: string
   price: string
   features: [string, string]
@@ -32,9 +35,17 @@ const ProductDetail: React.FC<{
   gallery,
   className,
   likes,
+  cartTitle,
 }) {
   const [cartItems, setCartItems] = useState(1)
   const navigate = useNavigate()
+  const ctx = useContext(CartContext)
+
+  const cartImgUrl = `/src/assets/cart/image-${img
+    .split('/')[3]
+    .split('-')
+    .slice(1)
+    .join('-')}.jpg`
 
   return (
     <div className="product-detail">
@@ -71,7 +82,23 @@ const ProductDetail: React.FC<{
                 +
               </p>
             </div>
-            <Button className="button-one">add to cart</Button>
+            <Button
+              className="button-one"
+              onClick={() => {
+                ctx.dispatchItem({
+                  action: 'ADD',
+                  payload: {
+                    name: cartTitle,
+                    count: cartItems,
+                    price,
+                    imgUrl: cartImgUrl,
+                  },
+                })
+                setCartItems(1)
+              }}
+            >
+              add to cart
+            </Button>
           </div>
         </section>
         <section>

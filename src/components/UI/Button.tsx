@@ -7,9 +7,15 @@ interface Props {
   className: 'button-one' | 'button-two' | 'button-three' | 'button-four'
   children: ReactNode
   onClick?: MouseEventHandler<HTMLButtonElement>
+  disabled?: boolean
 }
 
-const Button: React.FC<Props> = function ({ className, children, onClick }) {
+const Button: React.FC<Props> = function ({
+  className,
+  children,
+  onClick,
+  disabled = false,
+}) {
   const hoverVariant = {
     color: className === 'button-three' ? '#D87D4A' : '#FFFFFF',
     backgroundColor:
@@ -24,9 +30,10 @@ const Button: React.FC<Props> = function ({ className, children, onClick }) {
   return (
     <motion.button
       key={className}
-      whileHover={hoverVariant}
+      whileHover={!disabled ? hoverVariant : undefined}
       className={`buttons ${className}`}
       onClick={onClick || (() => {})}
+      disabled={disabled}
     >
       {children}
     </motion.button>

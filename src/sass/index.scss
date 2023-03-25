@@ -14,7 +14,7 @@ img:not(header img) {
 #root {
   display: grid;
   position: relative;
-  .header {
+  & > .header {
     order: -1;
   }
 }
