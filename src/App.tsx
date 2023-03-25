@@ -18,7 +18,7 @@ import PageNotFound from './components/pages/PageNotFound'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<HomeLayout />} errorElement={<PageNotFound />}>
+    <Route path="/" element={<HomeLayout />}>
       <Route index element={<Homepage />} />
       <Route element={<CategoryLayout />}>
         <Route path="speakers" element={<Speakers />} />
