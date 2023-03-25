@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useMemo } from 'react'
 import { To, useNavigate } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
@@ -41,13 +41,19 @@ const ProductDetail: React.FC<{
   const navigate = useNavigate()
   const ctx = useContext(CartContext)
 
-  console.log(img)
-  const cartImgUrl = `/src/assets/cart/image-${img
-    ?.split('/')[3]
-    .split('-')
-    .slice(1)
-    .join('-')}.jpg`
-  console.log(cartImgUrl)
+  let cartImgUrl: string
+
+  useEffect(() => {
+    import(
+      `../../assets/cart/image-${img
+        ?.split('/')[3]
+        .split('-')
+        .slice(1)
+        .join('-')}.jpg`
+    ).then(mod => {
+      cartImgUrl = mod.default
+    })
+  }, [cartItems])
 
   return (
     <div className="product-detail">
