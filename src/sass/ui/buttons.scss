@@ -2,6 +2,7 @@
 
 .buttons {
   @include buttonDefault;
+  border-radius: 3px;
 
   &.button-one {
     background-color: $brown-200;

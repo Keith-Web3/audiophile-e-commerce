@@ -1,0 +1,186 @@
+@use '../variables' as *;
+
+.error {
+  padding: $spacer;
+  padding-bottom: $spacer * 5;
+  background-color: #ffc700;
+  font-family: 'Bebas Neue', 'Manrope', 'Nunito', Verdana, Geneva, Tahoma,
+    sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-image: url('../../assets/error/Star\ 1.svg');
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 35%;
+  position: relative;
+  isolation: isolate;
+  @include screen(874) {
+    background-size: 300px;
+    padding-top: $spacer * 3;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0 calc($spacer - 3px) 0 calc($spacer - 3px);
+    border-inline: 3px solid rgba(orangered, 0.4);
+    z-index: -1;
+
+    @include screen(800) {
+      inset: 0;
+      width: 1205px;
+      margin-inline: auto;
+    }
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    height: 3px;
+    inset: calc($spacer - 3px) 0 auto 0;
+    background-color: rgba(orangered, 0.4);
+
+    @include screen(874) {
+      top: calc(($spacer * 3) - 3px);
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    z-index: 2;
+    position: relative;
+    @include screen(400) {
+      align-items: center;
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+
+    .home-btn {
+      all: unset;
+      background-color: #231b3b;
+      color: $white;
+      padding: 0.75em 1.3em;
+      text-transform: uppercase;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: transform 200ms linear;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    nav {
+      display: flex;
+      flex-direction: column;
+      @include screen(400) {
+        flex-direction: row;
+        gap: $spacer;
+      }
+      margin-left: auto;
+      text-align: end;
+      a {
+        text-decoration: none;
+        color: #231b3b;
+        text-transform: uppercase;
+        font-size: 1.25rem;
+      }
+    }
+  }
+  section {
+    max-width: 430px;
+    margin-inline: auto;
+
+    @include screen(800) {
+      max-width: 1200px;
+    }
+  }
+  .section-one {
+    margin-top: $spacer * 2;
+    margin-bottom: $spacer * -8;
+    @include screen(800) {
+      display: grid;
+      column-gap: $spacer * 1.5;
+      grid-template-columns: 430px 1fr;
+      align-items: center;
+      margin-block: -2 * $spacer;
+    }
+    .container {
+      @include screen(800) {
+        padding-top: 4 * $spacer;
+      }
+      p {
+        text-transform: uppercase;
+        font-size: 2rem;
+        color: #231b3b;
+        line-height: 40px;
+      }
+      button {
+        all: unset;
+        background-color: #ff7eff;
+        color: #231b3b;
+        padding: 0.75em 1.3em;
+        text-transform: uppercase;
+        font-size: 1.15rem;
+        border: 2px solid #231b3b;
+        box-shadow: 3px 3px 0 #231b3b;
+        transform: rotate(-3deg);
+        margin-top: $spacer * 1.5;
+        cursor: pointer;
+        transition: transform 200ms linear;
+        &:hover {
+          transform: scale(1.05) rotate(-3deg);
+        }
+      }
+      img {
+        transform: translate(30%, -25%);
+        width: 80%;
+        position: relative;
+        z-index: -1;
+      }
+    }
+    & > img {
+      display: none;
+      @include screen(800) {
+        display: block;
+        width: 100%;
+        max-width: 351px;
+        margin-left: auto;
+      }
+    }
+  }
+  .section-two {
+    .date {
+      display: flex;
+      align-items: center;
+      gap: $spacer;
+
+      img {
+        width: 2.5rem;
+      }
+      .day {
+        color: rgba(35, 27, 59, 0.26);
+        font-size: 1.35rem;
+      }
+    }
+    .context {
+      width: max-content;
+      max-width: 240px;
+      padding: $spacer;
+      font-size: 1.5rem;
+      box-shadow: 9px 9px 0 $dark-200;
+      transform: rotate(-3deg);
+      background-color: $white;
+      margin-top: $spacer;
+      p:first-child {
+        background-color: #231b3b;
+        color: $white;
+        padding: $spacer * 0.8;
+        width: calc(100% + ($spacer * 2));
+        transform: translate(-1 * $spacer, -1 * $spacer);
+      }
+      p:last-child {
+        overflow: hidden;
+        overflow-wrap: break-word;
+      }
+    }
+  }
+}
