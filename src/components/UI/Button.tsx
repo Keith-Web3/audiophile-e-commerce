@@ -31,6 +31,7 @@ const Button: React.FC<Props> = function ({
     <motion.button
       key={className}
       whileHover={!disabled ? hoverVariant : undefined}
+      whileTap={{ scale: 1.05 }}
       className={`buttons ${className}`}
       onClick={onClick || (() => {})}
       disabled={disabled}

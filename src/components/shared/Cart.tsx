@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { motion } from 'framer-motion'
+import React, { useContext, useEffect } from 'react'
+import { animate, motion, useMotionValue, useTransform } from 'framer-motion'
 
 import CartContext from '../store/CartContextProvider'
 import '../../sass/shared/cart.scss'
@@ -29,7 +29,9 @@ const Item: React.FC<{
         >
           -
         </p>
-        <p className="count">{count}</p>
+        <motion.p key={count} animate={{ scale: [1.3, 1] }} className="count">
+          {count}
+        </motion.p>
         <p
           className="btn"
           onClick={() => {
@@ -47,6 +49,17 @@ const Item: React.FC<{
 }
 const Cart: React.FC = function () {
   const ctx = useContext(CartContext)
+  const totalPrice = useMotionValue(0)
+  const rounded = useTransform(
+    totalPrice,
+    price => `$${new Intl.NumberFormat('en-US').format(Math.round(price))}`
+  )
+
+  useEffect(() => {
+    const controls = animate(totalPrice, calculateTotal(ctx.items))
+
+    return controls.stop
+  }, [calculateTotal(ctx.items)])
 
   return (
     <motion.div
@@ -74,7 +87,7 @@ const Cart: React.FC = function () {
         )}
         <p className="total">
           <span>Total</span>
-          <span>${calculateTotal(ctx.items)}</span>
+          <motion.span>{rounded}</motion.span>
         </p>
         <Button disabled={!ctx.items.length} className="button-one">
           checkout
@@ -102,7 +115,7 @@ const calculateTotal = function (
     },
     0
   )
-  return new Intl.NumberFormat('en-US').format(total)
+  return total
 }
 
 export default Cart

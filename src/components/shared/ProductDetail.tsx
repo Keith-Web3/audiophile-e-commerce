@@ -7,6 +7,7 @@ import '../../sass/shared/product_detail.scss'
 import Likes from './Likes'
 import CartContext from '../store/CartContextProvider'
 import { cartImages } from '../Data/data'
+import { motion } from 'framer-motion'
 
 const ProductDetail: React.FC<{
   img: string
@@ -68,7 +69,13 @@ const ProductDetail: React.FC<{
               >
                 -
               </p>
-              <p className="count">{cartItems}</p>
+              <motion.p
+                key={cartItems}
+                animate={{ scale: [1.3, 1] }}
+                className="count"
+              >
+                {cartItems}
+              </motion.p>
               <p
                 className="btn"
                 onClick={() => {

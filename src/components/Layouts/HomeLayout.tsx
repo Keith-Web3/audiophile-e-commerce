@@ -20,10 +20,8 @@ const HomeLayout: React.FC = function () {
         (e.target as HTMLElement).className === 'cartIcon'
       )
     ) {
-      console.log((e.target as HTMLElement).closest('.cart__container'))
       setIsCartOpen(false)
     }
-    console.log((e.target as HTMLElement).closest('.cart__container'))
   }
 
   useEffect(() => {
