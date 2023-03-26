@@ -12,7 +12,7 @@
   }
 }
 .cart__container {
-  width: max-content;
+  max-width: max-content;
   padding: $spacer * 1.5;
   border-radius: 8px;
   position: relative;
@@ -78,9 +78,15 @@
       grid-area: btn;
       display: flex;
       align-items: center;
-      gap: $spacer * 2.5;
+      gap: $spacer;
       background-color: $white-300;
-      padding: $spacer;
+      padding: $spacer * 0.5;
+      @include screen(350) {
+        padding: $spacer;
+      }
+      @include screen(370) {
+        gap: $spacer * 2.5;
+      }
       width: max-content;
       border-radius: 8px;
 
