@@ -48,7 +48,9 @@ const Item: React.FC<{
     </div>
   )
 }
-const Cart: React.FC = function () {
+const Cart: React.FC<{
+  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
+}> = function ({ setIsCartOpen }) {
   const ctx = useContext(CartContext)
   const totalPrice = useMotionValue(0)
   const rounded = useTransform(
@@ -93,7 +95,10 @@ const Cart: React.FC = function () {
         </p>
         <Button
           disabled={!ctx.items.length}
-          onClick={() => navigate('/checkout')}
+          onClick={() => {
+            navigate('/checkout')
+            setIsCartOpen(false)
+          }}
           className="button-one"
         >
           checkout

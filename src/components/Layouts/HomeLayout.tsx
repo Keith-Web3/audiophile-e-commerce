@@ -38,10 +38,10 @@ const HomeLayout: React.FC = function () {
 
   return (
     <>
-      <Outlet />
+      <Outlet context={setIsCartOpen} />
       <AnimatePresence>
         {isNavOpen === 'open' && <Dropdown key={nanoid()} />}
-        {isCartOpen && <Cart />}
+        {isCartOpen && <Cart setIsCartOpen={setIsCartOpen} />}
       </AnimatePresence>
       <Header
         isNavOpen={isNavOpen}
