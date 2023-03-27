@@ -66,11 +66,11 @@ const Checkout: React.FC = function () {
           </div>
           <label className="label" htmlFor="e-money-number">
             e-Money Number
-            <input type="text" name="e-money-number" />
+            <input type="text" name="e-money-number" placeholder="238521993" />
           </label>
           <label className="label" htmlFor="e-money-pin">
             e-Money Pin
-            <input type="text" name="e-money-pin" />
+            <input type="text" name="e-money-pin" placeholder="6891" />
           </label>
         </div>
       </Form>
