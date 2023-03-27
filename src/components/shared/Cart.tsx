@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 import CartContext from '../store/CartContextProvider'
 import '../../sass/shared/cart.scss'
@@ -54,6 +55,7 @@ const Cart: React.FC = function () {
     totalPrice,
     price => `$${new Intl.NumberFormat('en-US').format(Math.round(price))}`
   )
+  const navigate = useNavigate()
 
   useEffect(() => {
     const controls = animate(totalPrice, calculateTotal(ctx.items))
@@ -89,7 +91,11 @@ const Cart: React.FC = function () {
           <span>Total</span>
           <motion.span>{rounded}</motion.span>
         </p>
-        <Button disabled={!ctx.items.length} className="button-one">
+        <Button
+          disabled={!ctx.items.length}
+          onClick={() => navigate('/checkout')}
+          className="button-one"
+        >
           checkout
         </Button>
       </div>
