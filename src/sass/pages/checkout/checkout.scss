@@ -1,0 +1,123 @@
+@use '../../variables' as *;
+
+.checkout {
+  padding: $spacer;
+  background-color: $white-200;
+  & ~ .footer {
+    & > .container {
+      display: none;
+    }
+  }
+
+  .back {
+    color: rgba($dark-200, 0.5);
+    cursor: pointer;
+    user-select: none;
+  }
+  form {
+    background-color: $white;
+    padding: $spacer;
+    border-radius: 8px;
+    margin-top: $spacer;
+
+    h1 {
+      text-transform: uppercase;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    h2 {
+      letter-spacing: 1px;
+      font-size: 1rem;
+      color: $brown-200;
+      text-transform: uppercase;
+      margin-block: $spacer * 1.5 $spacer;
+    }
+    .label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: $spacer * 1.5;
+      display: block;
+      input {
+        display: block;
+        margin-top: $spacer * 0.5;
+        padding: 0.75em 1.3em;
+        width: 100%;
+        border: 1px solid #cfcfcf;
+        border-radius: 8px;
+
+        &:focus {
+          border-color: $brown-200 !important;
+        }
+        &::placeholder {
+          color: rgba($dark-200, 0.4);
+          font-weight: 700;
+        }
+      }
+    }
+    .method {
+      p {
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 1px;
+      }
+      label {
+        display: block;
+        border: 1px solid #cfcfcf;
+        border-radius: 8px;
+        padding: 0.75em 1.3em;
+        display: flex;
+        align-items: center;
+        @extend p;
+        font-weight: 500;
+        cursor: pointer;
+        margin-block: $spacer;
+        &:has(input:checked) {
+          border-color: $brown-200;
+        }
+
+        input {
+          margin-right: $spacer * 0.7;
+          cursor: pointer;
+        }
+      }
+    }
+
+    @include screen(545) {
+      .shipping-info,
+      .billing-details {
+        label,
+        h2 {
+          margin-bottom: 0;
+        }
+        h2 {
+          grid-area: header;
+        }
+        label:nth-of-type(1) {
+          grid-area: input-one;
+        }
+        label:nth-of-type(2) {
+          grid-area: input-two;
+        }
+        label:nth-of-type(3) {
+          grid-area: input-three;
+        }
+      }
+      .billing-details {
+        display: grid;
+        grid-template: repeat(3, auto) / repeat(2, 1fr);
+        grid-template-areas: 'header header' 'input-one input-two' 'input-three .';
+        gap: $spacer;
+      }
+      .shipping-info {
+        display: grid;
+        grid-template: repeat(4, auto) / repeat(2, 1fr);
+        grid-template-areas: 'header header' 'input-one input-one' 'input-two input-three' 'input-four .';
+        gap: $spacer;
+
+        input:nth-of-type(4) {
+          grid-area: input-four;
+        }
+      }
+    }
+  }
+}

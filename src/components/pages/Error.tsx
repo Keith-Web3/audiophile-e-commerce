@@ -19,9 +19,15 @@ const Error: React.FC = function () {
           Go Home
         </button>
         <nav>
-          <NavLink to="/headphones">Headphones</NavLink>
-          <NavLink to="/speakers">Speakers</NavLink>
-          <NavLink to="/earphones">Earphones</NavLink>
+          <NavLink to="/headphones" replace={true}>
+            Headphones
+          </NavLink>
+          <NavLink to="/speakers" replace={true}>
+            Speakers
+          </NavLink>
+          <NavLink to="/earphones" replace={true}>
+            Earphones
+          </NavLink>
         </nav>
       </div>
       <section className="section-one">

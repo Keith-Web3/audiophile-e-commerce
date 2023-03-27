@@ -16,11 +16,13 @@ import ProductDetail from './components/shared/ProductDetail'
 import data from './components/Data/data'
 import PageNotFound from './components/pages/PageNotFound'
 import Error from './components/pages/Error'
+import Checkout from './components/pages/Checkout/Checkout'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<HomeLayout />} errorElement={<Error />}>
       <Route index element={<Homepage />} />
+      <Route path="checkout" element={<Checkout />} />
       <Route element={<CategoryLayout />}>
         <Route path="speakers" element={<Speakers />} />
         <Route path="headphones" element={<HeadPhones />} />
