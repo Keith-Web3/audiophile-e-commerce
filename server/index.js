@@ -5,11 +5,11 @@ const app = express()
 
 const cors = require('cors')
 app.use(express.json())
-app.use(
-  cors({
-    origin: 'http://127.0.0.1:5173',
-  })
-)
+// app.use(
+//   cors({
+//     origin: 'http://127.0.0.1:5173',
+//   })
+// )
 
 // app.use(cors())
 
@@ -44,6 +44,10 @@ app.post('/', async (req, res) => {
       success_url: `${process.env.SERVER_URL}/success.html`,
       cancel_url: `${process.env.SERVER_URL}/cancel.html`,
     })
+    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5173')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
     res.json({ url: session.url })
   } catch (e) {
     res.status(500).json({ error: e.message })
