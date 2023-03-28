@@ -27,19 +27,18 @@ const Summary: React.FC = function () {
 
   useEffect(() => {
     const sendTest = async () => {
-      const res = await fetch(
-        'https://audiophile-e-commerce-ashy.vercel.app/test',
-        {
-          headers: {
-            'content-Type': 'application/json',
-          },
+      try {
+        const res = await fetch(
+          'https://audiophile-e-commerce-ashy.vercel.app/test'
+        )
+        const data = await res.json()
+        if (data.ok) {
+          console.log(data)
+        } else {
+          console.log(data)
         }
-      )
-      const data = await res.json()
-      if (data.ok) {
-        console.log(data)
-      } else {
-        console.log(data)
+      } catch (err: any) {
+        console.log(err.message)
       }
     }
     sendTest()

@@ -5,13 +5,15 @@ const app = express()
 
 const cors = require('cors')
 app.use(express.json())
-app.use(
-  cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    credentials: true,
-  })
-)
+// app.use(
+//   cors({
+//     origin: '*',
+//     methods: ['GET', 'POST', 'OPTIONS'],
+//     credentials: true,
+//   })
+// )
+
+app.use(cors())
 
 const stripe = require('stripe')(process.env.STRIPE_KEY)
 
