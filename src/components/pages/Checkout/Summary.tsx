@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 
 import { calculateTotal } from '../../shared/Cart'
@@ -24,6 +24,34 @@ const Item: React.FC<{
 
 const Summary: React.FC = function () {
   const ctx = useContext(CartContext)
+
+  useEffect(() => {
+    fetch(
+      'https://audiophile-e-commerce-ashy.vercel.app/create-checkout-session',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          items: [
+            { id: 1, quantity: 3 },
+            { id: 2, quantity: 1 },
+          ],
+        }),
+      }
+    )
+      .then(res => {
+        if (res.ok) return res.json()
+        return res.json().then(json => Promise.reject(json))
+      })
+      .then(({ url }) => {
+        console.log(url)
+      })
+      .catch(e => {
+        console.log(e.error)
+      })
+  })
 
   return (
     <div className="summary">
