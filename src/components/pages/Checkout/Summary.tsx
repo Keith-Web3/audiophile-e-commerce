@@ -34,7 +34,6 @@ const Summary: React.FC = function () {
       },
       body: JSON.stringify({
         items: ctx.items.map(item => {
-          console.log(item)
           return { id: item.name, quantity: item.count }
         }),
       }),
@@ -48,9 +47,9 @@ const Summary: React.FC = function () {
         setPaymentLink(url)
       })
       .catch(e => {
-        console.log(e)
+        console.log(e.error)
       })
-  })
+  }, [])
 
   return (
     <div className="summary">
@@ -86,9 +85,9 @@ const Summary: React.FC = function () {
           )}
         </span>
       </p>
-      <a href={paymentLink}>
-        <Button className="button-one">check & pay</Button>
-      </a>
+      <Button className="button-one" onClick={() => window.open(paymentLink)}>
+        check & pay
+      </Button>
     </div>
   )
 }

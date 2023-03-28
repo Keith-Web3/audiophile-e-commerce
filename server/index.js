@@ -36,7 +36,7 @@ app.post('/', async (req, res) => {
         const storeItem = storeItems.get(item.id)
         return {
           price_data: {
-            currency: 'ngn',
+            currency: 'usd',
             product_data: {
               name: storeItem.name,
             },

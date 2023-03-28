@@ -8,11 +8,11 @@ const Checkout: React.FC = function () {
   const navigate = useNavigate()
 
   return (
-    <div className="checkout">
+    <Form method="post" className="checkout">
       <p className="back" onClick={() => navigate(-1 as To, { replace: true })}>
         go back
       </p>
-      <Form method="post">
+      <div className="container">
         <h1>Checkout</h1>
         <div className="billing-details">
           <h2>billing details</h2>
@@ -74,9 +74,9 @@ const Checkout: React.FC = function () {
             <input type="text" name="e-money-pin" placeholder="6891" />
           </label>
         </div>
-      </Form>
+      </div>
       <Summary />
-    </div>
+    </Form>
   )
 }
 
