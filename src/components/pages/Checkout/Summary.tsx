@@ -29,7 +29,7 @@ const Summary: React.FC = function () {
     const sendTest = async () => {
       try {
         const res = await fetch(
-          'https://audiophile-e-commerce-ashy.vercel.app/test'
+          'https://audiophile-e-commerce-ashy.vercel.app/'
         )
         const data = await res.json()
         if (data.ok) {

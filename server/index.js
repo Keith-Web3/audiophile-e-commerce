@@ -22,7 +22,7 @@ const storeItems = new Map([
   [2, { priceInCents: 20000, name: 'Learn CSS Today' }],
 ])
 
-app.get('/test', async (req, res) => {
+app.get('/', async (req, res) => {
   // console.log("rocess.env.STRIPE_KEY)
   let congrats = JSON.stringify('It is working fine')
   res.status(200).send(congrats)
