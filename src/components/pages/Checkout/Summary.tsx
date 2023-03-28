@@ -26,47 +26,27 @@ const Summary: React.FC = function () {
   const ctx = useContext(CartContext)
 
   useEffect(() => {
-    const sendTest = async () => {
-      try {
-        const res = await fetch(
-          'https://audiophile-e-commerce-ashy.vercel.app/'
-        )
-        const data = await res.json()
-        if (data.ok) {
-          console.log(data)
-        } else {
-          console.log(data)
-        }
-      } catch (err: any) {
-        console.log(err.message)
-      }
-    }
-    sendTest()
-
     // .then(res => res)
     // .then(data => console.log(data))
 
-    // const res = fetch(
-    //   'https://audiophile-e-commerce-ashy.vercel.app/create-checkout-session',
-    //   {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     credentials: 'include',
-    //   }
-    // )
-    //   .then(res => {
-    //     console.log(res.json())
-    //     if (res.ok) return res.json()
-    //     return res.json().then(json => Promise.reject(json))
-    //   })
-    //   .then(({ url }) => {
-    //     console.log(url)
-    //   })
-    //   .catch(e => {
-    //     console.log(e.error)
-    //   })
+    const res = fetch('https://audiophile-e-commerce-ashy.vercel.app/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+      .then(res => {
+        console.log(res.json())
+        if (res.ok) return res.json()
+        return res.json().then(json => Promise.reject(json))
+      })
+      .then(({ url }) => {
+        console.log(url)
+      })
+      .catch(e => {
+        console.log(e.error)
+      })
   })
 
   return (
