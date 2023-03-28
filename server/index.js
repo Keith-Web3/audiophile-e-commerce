@@ -42,6 +42,7 @@ app.post('/create-checkout-session', async (req, res) => {
       success_url: `${process.env.SERVER_URL}/success.html`,
       cancel_url: `${process.env.SERVER_URL}/cancel.html`,
     })
+    response.headers.set('Access-Control-Allow-Origin', '*')
     res.json({ url: session.url })
   } catch (e) {
     res.status(500).json({ error: e.message })

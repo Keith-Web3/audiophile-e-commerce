@@ -39,6 +39,7 @@ const Summary: React.FC = function () {
             { id: 2, quantity: 1 },
           ],
         }),
+        credentials: 'include',
       }
     )
       .then(res => {
