@@ -108,7 +108,7 @@ const Cart: React.FC<{
     </motion.div>
   )
 }
-const calculateTotal = function (
+export const calculateTotal = function (
   items: {
     imgUrl: string
     name: string

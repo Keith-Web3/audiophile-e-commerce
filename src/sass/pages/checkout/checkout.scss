@@ -15,12 +15,20 @@
     user-select: none;
     font-weight: 500;
     text-transform: capitalize;
+    max-width: 660px;
+    margin-inline: auto;
   }
   form {
     background-color: $white;
     padding: $spacer;
     border-radius: 8px;
     margin-top: $spacer;
+    max-width: 660px;
+    margin-inline: auto;
+
+    @include screen(680) {
+      padding: $spacer * 2;
+    }
 
     h1 {
       text-transform: uppercase;
@@ -58,6 +66,12 @@
       }
     }
     .method {
+      @include screen(545) {
+        display: grid;
+        grid-template: repeat(2, auto) / repeat(2, 1fr);
+        grid-template-areas: 'text input-one' '. input-two';
+        gap: $spacer;
+      }
       p {
         font-weight: 700;
         font-size: 1rem;
@@ -83,6 +97,23 @@
           caret-color: $brown-200;
         }
       }
+      @include screen(545) {
+        p {
+          grid-area: text;
+        }
+        label {
+          margin-block: 0;
+          width: 100%;
+          justify-self: end;
+          margin-left: auto;
+        }
+        label:nth-of-type(1) {
+          grid-area: input-one;
+        }
+        label:nth-of-type(2) {
+          grid-area: input-two;
+        }
+      }
     }
 
     @include screen(545) {
@@ -103,6 +134,26 @@
         }
         label:nth-of-type(3) {
           grid-area: input-three;
+        }
+      }
+      .payment-details {
+        display: grid;
+        grid-template: repeat(3, auto) / repeat(2, 1fr);
+        grid-template-areas: 'header header' 'method method' 'label-one label-two';
+        gap: $spacer;
+
+        h2 {
+          grid-area: header;
+        }
+        .method {
+          grid-area: method;
+          margin-bottom: $spacer * 1.5;
+        }
+        .label:first-of-type(1) {
+          grid-area: label-one;
+        }
+        .label:first-of-type(2) {
+          grid-area: label-two;
         }
       }
       .billing-details {

@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, To, useNavigate } from 'react-router-dom'
 
 import '../../../sass/pages/checkout/checkout.scss'
+import Summary from './Summary'
 
 const Checkout: React.FC = function () {
   const navigate = useNavigate()
@@ -11,7 +12,7 @@ const Checkout: React.FC = function () {
       <p className="back" onClick={() => navigate(-1 as To, { replace: true })}>
         go back
       </p>
-      <Form>
+      <Form method="post">
         <h1>Checkout</h1>
         <div className="billing-details">
           <h2>billing details</h2>
@@ -74,6 +75,7 @@ const Checkout: React.FC = function () {
           </label>
         </div>
       </Form>
+      <Summary />
     </div>
   )
 }

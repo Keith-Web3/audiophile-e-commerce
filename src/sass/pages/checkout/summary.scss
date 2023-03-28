@@ -1,0 +1,75 @@
+@use '../../variables' as *;
+
+.summary {
+  background-color: $white;
+  margin-top: $spacer;
+  border-radius: 8px;
+  padding: $spacer;
+  max-width: 660px;
+  margin-inline: auto;
+
+  @include screen(680) {
+    padding: $spacer * 2;
+  }
+
+  h2 {
+    text-transform: uppercase;
+  }
+  .item {
+    display: grid;
+    grid-template: repeat(2, auto) / 64px max-content 1fr;
+    grid-template-areas: 'img name count' 'img price .';
+    gap: $spacer;
+    margin-top: $spacer;
+
+    img {
+      grid-area: img;
+      border-radius: 8px;
+    }
+    .name {
+      grid-area: name;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .price {
+      grid-area: price;
+      font-weight: 700;
+      color: rgba($dark-200, 0.5);
+    }
+    .count {
+      grid-area: count;
+      font-weight: 700;
+      color: rgba($dark-200, 0.5);
+      text-align: end;
+    }
+  }
+  & > p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: $spacer;
+
+    &:first-of-type {
+      margin-top: $spacer * 2.5;
+    }
+
+    .title {
+      color: rgba($dark-200, 0.5);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .count {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .total {
+      color: $brown-200;
+    }
+  }
+  button {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: $spacer * 2;
+  }
+}
