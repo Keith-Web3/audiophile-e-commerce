@@ -18,11 +18,13 @@ app.use(
 const stripe = require('stripe')(process.env.STRIPE_KEY)
 
 const storeItems = new Map([
-  [1, { priceInCents: 10000, name: 'Learn React Today' }],
-  [2, { priceInCents: 20000, name: 'Learn CSS Today' }],
+  ['XX99 MK II', { priceInCents: 299900, name: 'XX99 Mark II Headphones' }],
+  ['XX99 MK I', { priceInCents: 175000, name: 'XX99 Mark I Headphones' }],
+  ['XX59', { priceInCents: 89900, name: 'XX59 Headphones' }],
+  ['ZX9', { priceInCents: 450000, name: 'ZX9 SPEAKER' }],
+  ['ZX7', { priceInCents: 350000, name: 'ZX7 SPEAKER' }],
+  ['YX1', { priceInCents: 59900, name: 'YX1 SPEAKER' }],
 ])
-// let congrats = JSON.stringify('It is working fine')
-// res.status(200).send(congrats)
 
 app.post('/', async (req, res) => {
   console.log(process.env.STRIPE_KEY)

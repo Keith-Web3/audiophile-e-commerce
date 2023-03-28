@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { nanoid } from 'nanoid'
 
 import { calculateTotal } from '../../shared/Cart'
@@ -24,28 +24,31 @@ const Item: React.FC<{
 
 const Summary: React.FC = function () {
   const ctx = useContext(CartContext)
+  const [paymentLink, setPaymentLink] = useState('')
 
   useEffect(() => {
-    // .then(res => res)
-    // .then(data => console.log(data))
-
     const res = fetch('https://audiophile-e-commerce-ashy.vercel.app/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        items: ctx.items.map(item => {
+          console.log(item)
+          return { id: item.name, quantity: item.count }
+        }),
+      }),
       credentials: 'include',
     })
       .then(res => {
-        console.log(res.json())
         if (res.ok) return res.json()
         return res.json().then(json => Promise.reject(json))
       })
       .then(({ url }) => {
-        console.log(url)
+        setPaymentLink(url)
       })
       .catch(e => {
-        console.log(e.error)
+        console.log(e)
       })
   })
 
@@ -83,7 +86,9 @@ const Summary: React.FC = function () {
           )}
         </span>
       </p>
-      <Button className="button-one">check & pay</Button>
+      <a href={paymentLink}>
+        <Button className="button-one">check & pay</Button>
+      </a>
     </div>
   )
 }
