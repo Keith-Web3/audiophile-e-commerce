@@ -3,7 +3,10 @@
 .buttons {
   @include buttonDefault;
   border-radius: 3px;
-
+  &:disabled {
+    background-color: #4c4c4c !important;
+    cursor: not-allowed;
+  }
   &.button-one {
     background-color: $brown-200;
     color: $white;

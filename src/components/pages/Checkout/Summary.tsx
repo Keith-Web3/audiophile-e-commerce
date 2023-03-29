@@ -24,32 +24,6 @@ const Item: React.FC<{
 
 const Summary: React.FC = function () {
   const ctx = useContext(CartContext)
-  const [paymentLink, setPaymentLink] = useState('')
-
-  useEffect(() => {
-    const res = fetch('https://audiophile-e-commerce-ashy.vercel.app/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        items: ctx.items.map(item => {
-          return { id: item.name, quantity: item.count }
-        }),
-      }),
-      credentials: 'include',
-    })
-      .then(res => {
-        if (res.ok) return res.json()
-        return res.json().then(json => Promise.reject(json))
-      })
-      .then(({ url }) => {
-        setPaymentLink(url)
-      })
-      .catch(e => {
-        console.log(e.error)
-      })
-  }, [])
 
   return (
     <div className="summary">
@@ -85,7 +59,9 @@ const Summary: React.FC = function () {
           )}
         </span>
       </p>
-      <Button className="button-one">check & pay</Button>
+      <Button className="button-one" disabled={calculateTotal(ctx.items) === 0}>
+        check & pay
+      </Button>
     </div>
   )
 }

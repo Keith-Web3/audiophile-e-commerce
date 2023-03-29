@@ -1,6 +1,6 @@
-import React, { createContext, ReactNode, useEffect, useState } from 'react'
+import React, { createContext, ReactNode, useState } from 'react'
 
-interface Item {
+export interface Item {
   imgUrl: string
   name: string
   price: string

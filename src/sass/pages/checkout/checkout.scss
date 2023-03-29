@@ -15,10 +15,10 @@
     color: rgba(red, 0.8);
     display: none;
   }
-  input:invalid + p {
+  input.invalid + p {
     display: block;
   }
-  input:invalid {
+  input.invalid {
     border: 2px solid red !important;
   }
   .back {
