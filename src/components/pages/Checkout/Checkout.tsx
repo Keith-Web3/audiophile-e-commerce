@@ -1,11 +1,5 @@
 import React, { ChangeEventHandler } from 'react'
-import {
-  Form,
-  redirect,
-  To,
-  useNavigate,
-  useNavigation,
-} from 'react-router-dom'
+import { Form, redirect, To, useNavigate } from 'react-router-dom'
 
 import '../../../sass/pages/checkout/checkout.scss'
 import { Item } from '../../store/CartContextProvider'
@@ -64,6 +58,10 @@ const formVal: ChangeEventHandler<HTMLInputElement> = function (e) {
       isValid = /\w{3,}/.test(e.target.value)
       break
     }
+    case 'phone': {
+      isValid = /^[0-9+-]+$/.test(e.target.value)
+      break
+    }
   }
   isValid
     ? e.target.classList.remove('invalid')
@@ -71,9 +69,7 @@ const formVal: ChangeEventHandler<HTMLInputElement> = function (e) {
 }
 const Checkout: React.FC = function () {
   const navigate = useNavigate()
-  const navigation = useNavigation()
 
-  console.log(navigation.state)
   return (
     <Form method="post" className="checkout">
       <p className="back" onClick={() => navigate(-1 as To, { replace: true })}>
@@ -106,7 +102,13 @@ const Checkout: React.FC = function () {
           </label>
           <label className="label" htmlFor="phone">
             Phone Number
-            <input type="text" placeholder="+1 202-555-0136" name="phone" />
+            <input
+              type="text"
+              onChange={formVal}
+              placeholder="+1 202-555-0136"
+              name="phone"
+              required
+            />
             <p>invalid format!!</p>
           </label>
         </div>

@@ -75,6 +75,9 @@
     box-sizing: border-box;
     text-align: center;
     margin-top: $spacer * 2;
+    display: flex;
+    place-content: center;
+    gap: $spacer;
 
     &:disabled a {
       pointer-events: none;

@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { nanoid } from 'nanoid'
+import { useNavigation } from 'react-router-dom'
 
 import { calculateTotal } from '../../shared/Cart'
 import CartContext from '../../store/CartContextProvider'
 import '../../../sass/pages/checkout/summary.scss'
 import Button from '../../UI/Button'
+import Loading from '../../UI/Loading'
 
 const Item: React.FC<{
   imgUrl: string
@@ -24,6 +26,7 @@ const Item: React.FC<{
 
 const Summary: React.FC = function () {
   const ctx = useContext(CartContext)
+  const navigation = useNavigation()
 
   return (
     <div className="summary">
@@ -59,7 +62,13 @@ const Summary: React.FC = function () {
           )}
         </span>
       </p>
-      <Button className="button-one" disabled={calculateTotal(ctx.items) === 0}>
+      <Button
+        className="button-one"
+        disabled={
+          calculateTotal(ctx.items) === 0 || navigation.state === 'submitting'
+        }
+      >
+        {navigation.state === 'submitting' && <Loading />}
         check & pay
       </Button>
     </div>
