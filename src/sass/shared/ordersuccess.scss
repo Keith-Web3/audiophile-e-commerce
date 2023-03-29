@@ -1,1 +1,122 @@
 @use '../variables' as *;
+
+.order-success {
+  background-color: $white;
+  padding: $spacer;
+  border-radius: 8px;
+
+  @include screen(545) {
+    padding: $spacer * 1.5;
+  }
+
+  .check {
+    width: 45px;
+    margin-bottom: $spacer;
+  }
+  .title {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 36px;
+
+    @include screen(545) {
+      font-size: 2.3rem;
+      max-width: 300px;
+    }
+  }
+  .confirmation {
+    color: rgba($dark-200, 0.5);
+    font-weight: 500;
+    margin-block: $spacer;
+    font-size: 1.075rem;
+  }
+  .order-summary {
+    @include screen(545) {
+      display: flex;
+
+      .main {
+        flex: 1.5;
+        border-radius: 8px 0 0 8px !important;
+        padding-block: $spacer * 1.5;
+        min-width: max-content;
+      }
+      .total {
+        flex: 1;
+        border-radius: 0 8px 8px 0 !important;
+        display: grid;
+        align-content: center;
+        padding-block: $spacer * 1.5;
+      }
+    }
+    .main {
+      display: grid;
+      column-gap: $spacer;
+      grid-template: repeat(4, auto) / 64px 1fr max-content;
+      grid-template-areas: 'img name count' 'img price count' 'line line line' 'others others others';
+      background-color: $white-300;
+      padding: $spacer;
+      border-radius: 8px 8px 0 0;
+
+      img {
+        grid-area: img;
+        border-radius: 8px;
+      }
+      .name {
+        font-weight: 700;
+        grid-area: name;
+      }
+      .price {
+        grid-area: price;
+      }
+      .count {
+        grid-area: count;
+        margin-block: auto;
+      }
+      .line {
+        height: 1px;
+        background-color: rgba($dark-200, 0.08);
+        grid-area: line;
+        margin-block: $spacer * 0.5 $spacer;
+      }
+      .others {
+        grid-area: others;
+        text-align: center;
+        color: rgba($dark-200, 0.5);
+        font-weight: 500;
+      }
+      .price,
+      .count {
+        color: rgba($dark-200, 0.5);
+        font-weight: 700;
+      }
+    }
+    .total {
+      background-color: $dark-200;
+      padding: $spacer;
+      border-radius: 0 0 8px 8px;
+
+      p {
+        &:first-child {
+          color: rgba($white, 0.5);
+          font-weight: 500;
+          text-transform: uppercase;
+          margin-bottom: $spacer;
+        }
+        &:last-child {
+          color: $white;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  button {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: $spacer * 1.5;
+
+    a {
+      text-decoration: none;
+      color: $white;
+    }
+  }
+}

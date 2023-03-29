@@ -5,6 +5,7 @@ import checkIcon from '../../assets/checkout/icon-order-confirmation.svg'
 import CartContext from '../store/CartContextProvider'
 import Button from '../UI/Button'
 import '../../sass/shared/ordersuccess.scss'
+import { Link } from 'react-router-dom'
 
 const OrderSuccess: React.FC = function () {
   const ctx = useContext(CartContext)
@@ -12,10 +13,12 @@ const OrderSuccess: React.FC = function () {
   return (
     <div className="order-success">
       <div className="modal">
-        <img src={checkIcon} alt="success" />
+        <img className="check" src={checkIcon} alt="success" />
         <p className="title">THANK YOU FOR YOUR ORDER</p>
-        <p>You will receive an email confirmation shortly.</p>
-        <div className="summary">
+        <p className="confirmation">
+          You will receive an email confirmation shortly.
+        </p>
+        <div className="order-summary">
           <div className="main">
             <img src={ctx.items[0].imgUrl} alt={ctx.items[0]?.name} />
             <p className="name">{ctx.items[0].name}</p>
@@ -42,9 +45,10 @@ const OrderSuccess: React.FC = function () {
             </p>
           </div>
         </div>
-        <Button className="button-one">back to home</Button>
+        <Button className="button-one">
+          <Link to="/">back to home</Link>
+        </Button>
       </div>
-      <div className="backdrop"></div>
     </div>
   )
 }

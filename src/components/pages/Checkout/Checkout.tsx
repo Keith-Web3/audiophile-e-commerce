@@ -1,4 +1,5 @@
 import React, { ChangeEventHandler } from 'react'
+import ReactDOM from 'react-dom'
 import {
   Form,
   redirect,
@@ -190,7 +191,11 @@ const Checkout: React.FC = function () {
         </div>
       </div>
       <Summary />
-      {searchParams.get('ordersuccess') && <OrderSuccess />}
+      {searchParams.get('ordersuccess') &&
+        ReactDOM.createPortal(
+          <OrderSuccess />,
+          document.getElementById('modal-root')!
+        )}
     </Form>
   )
 }
