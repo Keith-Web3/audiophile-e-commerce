@@ -4,11 +4,19 @@ import { Form, To, useNavigate } from 'react-router-dom'
 import '../../../sass/pages/checkout/checkout.scss'
 import Summary from './Summary'
 
+export const checkoutAction = async function ({
+  request,
+}: {
+  request: Request
+}) {
+  const data = await request.formData()
+  console.log(data)
+}
 const Checkout: React.FC = function () {
   const navigate = useNavigate()
 
   return (
-    <Form method="post" className="checkout">
+    <Form method="post" action="/checkout" className="checkout">
       <p className="back" onClick={() => navigate(-1 as To, { replace: true })}>
         go back
       </p>
@@ -18,15 +26,29 @@ const Checkout: React.FC = function () {
           <h2>billing details</h2>
           <label className="label" htmlFor="name">
             Name
-            <input type="text" placeholder="Alexei Ward" name="name" />
+            <input
+              type="text"
+              placeholder="Alexei Ward"
+              pattern="^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$"
+              name="name"
+              required
+            />
+            <p>invalid format!!</p>
           </label>
           <label className="label" htmlFor="email">
             Email Address
-            <input type="email" placeholder="alexei@mail.com" name="email" />
+            <input
+              type="email"
+              placeholder="alexei@mail.com"
+              name="email"
+              required
+            />
+            <p>invalid format!!</p>
           </label>
           <label className="label" htmlFor="phone">
             Phone Number
             <input type="text" placeholder="+1 202-555-0136" name="phone" />
+            <p>invalid format!!</p>
           </label>
         </div>
         <div className="shipping-info">
@@ -37,19 +59,35 @@ const Checkout: React.FC = function () {
               type="text"
               placeholder="1137 Williams Avenue"
               name="address"
+              pattern="^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$"
+              required
             />
+            <p>invalid format!!</p>
           </label>
           <label className="label" htmlFor="zip-code">
             ZIP Code
-            <input type="text" placeholder="10001" name="zip-code" />
+            <input
+              type="text"
+              placeholder="10001"
+              pattern="^\d{5}(?:[-\s]\d{4})?$"
+              name="zip-code"
+            />
+            <p>invalid format!!</p>
           </label>
           <label className="label" htmlFor="city">
             City
-            <input type="text" placeholder="New York" name="city" />
+            <input type="text" placeholder="New York" name="city" required />
+            <p>This field is required</p>
           </label>
           <label className="label" htmlFor="country">
             Country
-            <input type="text" placeholder="United States" name="country" />
+            <input
+              type="text"
+              placeholder="United States"
+              name="country"
+              required
+            />
+            <p>This field is required</p>
           </label>
         </div>
         <div className="payment-details">

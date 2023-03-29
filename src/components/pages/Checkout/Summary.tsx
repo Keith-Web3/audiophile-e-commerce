@@ -85,9 +85,7 @@ const Summary: React.FC = function () {
           )}
         </span>
       </p>
-      <Button className="button-one" onClick={() => window.open(paymentLink)}>
-        check & pay
-      </Button>
+      <Button className="button-one">check & pay</Button>
     </div>
   )
 }
