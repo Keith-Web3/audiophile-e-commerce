@@ -7,13 +7,14 @@ const cors = require('cors')
 app.use(express.json())
 app.use(
   cors({
-    origin: 'http://127.0.0.1:5173',
+    origin: [
+      'http://127.0.0.1:5173',
+      'https://gleeful-medovik-88e4a5.netlify.app',
+    ],
     methods: ['GET', 'POST', 'OPTIONS'],
     credentials: true,
   })
 )
-
-// app.use(cors())
 
 const stripe = require('stripe')(process.env.STRIPE_KEY)
 
@@ -27,7 +28,6 @@ const storeItems = new Map([
 ])
 
 app.post('/', async (req, res) => {
-  console.log(process.env.STRIPE_KEY)
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
