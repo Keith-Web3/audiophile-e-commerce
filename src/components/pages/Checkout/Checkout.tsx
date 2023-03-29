@@ -1,7 +1,14 @@
 import React, { ChangeEventHandler } from 'react'
-import { Form, redirect, To, useNavigate } from 'react-router-dom'
+import {
+  Form,
+  redirect,
+  To,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom'
 
 import '../../../sass/pages/checkout/checkout.scss'
+import OrderSuccess from '../../shared/OrderSuccess'
 import { Item } from '../../store/CartContextProvider'
 import Summary from './Summary'
 
@@ -69,6 +76,7 @@ const formVal: ChangeEventHandler<HTMLInputElement> = function (e) {
 }
 const Checkout: React.FC = function () {
   const navigate = useNavigate()
+  const [searchParams, setSearchParams] = useSearchParams()
 
   return (
     <Form method="post" className="checkout">
@@ -182,6 +190,7 @@ const Checkout: React.FC = function () {
         </div>
       </div>
       <Summary />
+      {searchParams.get('ordersuccess') && <OrderSuccess />}
     </Form>
   )
 }

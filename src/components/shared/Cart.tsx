@@ -96,8 +96,7 @@ const Cart: React.FC<{
         <Button
           disabled={!ctx.items.length}
           onClick={() => {
-            console.log(ctx.items)
-            navigate(`/checkout?items=${JSON.stringify(ctx.items)}`)
+            navigate(`/checkout?ordersuccess=true`)
             setIsCartOpen(false)
           }}
           className="button-one"
