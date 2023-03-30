@@ -94,6 +94,7 @@ const Checkout: React.FC = function () {
               type="text"
               placeholder="Alexei Ward"
               name="name"
+              pattern="^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$"
               onChange={formVal}
               required
             />
@@ -115,6 +116,7 @@ const Checkout: React.FC = function () {
               type="text"
               onChange={formVal}
               placeholder="+1 202-555-0136"
+              pattern="^[0-9+-]+$"
               name="phone"
               required
             />
@@ -129,6 +131,7 @@ const Checkout: React.FC = function () {
               type="text"
               placeholder="1137 Williams Avenue"
               name="address"
+              pattern="\w+"
               onChange={formVal}
               required
             />
@@ -140,6 +143,7 @@ const Checkout: React.FC = function () {
               type="text"
               placeholder="10001"
               onChange={formVal}
+              pattern="^\d{5}(?:[-\s]\d{4})?$"
               name="zip-code"
             />
             <p>invalid format!!</p>
@@ -149,6 +153,7 @@ const Checkout: React.FC = function () {
             <input
               type="text"
               onChange={formVal}
+              pattern="\w+"
               placeholder="New York"
               name="city"
               required
@@ -161,6 +166,7 @@ const Checkout: React.FC = function () {
               type="text"
               placeholder="United States"
               name="country"
+              pattern="\w{3,}"
               onChange={formVal}
               required
             />
