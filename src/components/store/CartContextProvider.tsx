@@ -1,4 +1,5 @@
-import React, { createContext, ReactNode, useState } from 'react'
+import React, { createContext, ReactNode, useEffect, useState } from 'react'
+import { calculateTotal } from '../shared/Cart'
 
 export interface Item {
   imgUrl: string
@@ -28,6 +29,15 @@ export const CartProvider: React.FC<{ children: ReactNode }> = function ({
 }) {
   const [items, setItems] = useState<Item[] | []>([])
 
+  useEffect(() => {
+    const isStoreSet = localStorage.getItem('store')
+    console.log(isStoreSet?.length)
+    isStoreSet?.length && setItems(JSON.parse(isStoreSet))
+  }, [])
+  useEffect(() => {
+    localStorage.setItem('store', JSON.stringify(items))
+  }, [calculateTotal(items)])
+
   const initialValue: cart = {
     items: items,
     dispatchItem({ action, payload }) {
@@ -44,6 +54,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = function ({
           clonedItems[idx].count += payload.count
           setItems(clonedItems)
         }
+        ;``
       } else if (action === 'REMOVE') {
         if (clonedItems[idx].count > 1) {
           clonedItems[idx].count--
