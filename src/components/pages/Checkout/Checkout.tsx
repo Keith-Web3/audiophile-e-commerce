@@ -79,6 +79,10 @@ const Checkout: React.FC = function () {
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
 
+  if (!searchParams.get('orderSuccess')) {
+    throw new Error('Something went wrong with your payment. Please try again.')
+  }
+
   return (
     <Form method="post" className="checkout">
       <p className="back" onClick={() => navigate(-1 as To, { replace: true })}>

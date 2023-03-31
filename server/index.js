@@ -46,7 +46,7 @@ app.post('/', async (req, res) => {
         }
       }),
       success_url: `${process.env.SERVER_URL}/checkout?ordersuccess=true`,
-      cancel_url: `${process.env.SERVER_URL}/cancel.html`,
+      cancel_url: `${process.env.SERVER_URL}/checkout?ordersuccess=false`,
     })
     res.json({ url: session.url })
   } catch (e) {
