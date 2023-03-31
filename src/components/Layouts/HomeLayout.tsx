@@ -17,7 +17,9 @@ const HomeLayout: React.FC = function () {
     if (
       !(
         (e.target as HTMLElement).closest('.cart__container') ||
-        (e.target as HTMLElement).className === 'cartIcon'
+        (e.target as HTMLElement).className === 'cartIcon' ||
+        (e.target as HTMLElement).className === 'cart-img' ||
+        (e.target as HTMLElement).className === 'count'
       )
     ) {
       setIsCartOpen(false)

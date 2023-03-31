@@ -28,8 +28,28 @@
         display: none;
       }
     }
-    .cartIcon {
+    .cart-img {
       cursor: pointer;
+      position: relative;
+
+      .count {
+        position: absolute;
+        inset: 0 0 auto auto;
+        color: $white;
+        font-weight: 700;
+        background-color: $brown-200;
+        padding: $spacer * 0.5;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        transform: translate(50%, -60%);
+        line-height: 0;
+
+        &:empty {
+          display: none;
+        }
+      }
     }
     nav {
       display: none;

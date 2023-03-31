@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 import cartIcon from '../../../assets/shared/desktop/icon-cart.svg'
 import logo from '../../../assets/shared/desktop/logo.svg'
 import Hamburger from '../../UI/Hamburger'
 import '../../../sass/shared/header/header.scss'
 import CartContext from '../../store/CartContextProvider'
-import { calculateTotal } from '../Cart'
 
 const Header: React.FC<{
   isNavOpen: 'open' | 'closed'
@@ -47,13 +47,17 @@ const Header: React.FC<{
             earphones
           </NavLink>
         </nav>
-        <img
-          data-items={calculateTotal(ctx.items)}
-          onClick={() => setIsCartOpen(prev => !prev)}
-          className="cartIcon"
-          src={cartIcon}
-          alt="cart"
-        />
+        <div className="cart-img" onClick={() => setIsCartOpen(prev => !prev)}>
+          <img className="cartIcon" src={cartIcon} alt="cart" />
+          <motion.p
+            key={ctx.items.length}
+            initial={{ y: '-60%', x: '50%' }}
+            animate={{ fontSize: ['1.1rem', '1rem'], y: '-60%', x: '50%' }}
+            className="count"
+          >
+            {ctx.items.length || null}
+          </motion.p>
+        </div>
       </div>
     </header>
   )
