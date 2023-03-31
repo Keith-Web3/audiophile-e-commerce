@@ -40,10 +40,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = function ({
   useEffect(() => {
     if (hasMounted.current) {
       localStorage.setItem('store', JSON.stringify(items))
-      console.log(items)
     } else {
       const isStoreSet = localStorage.getItem('store')
-      console.log(isStoreSet)
       isStoreSet?.length && setItems(JSON.parse(isStoreSet))
       hasMounted.current = true
     }
