@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 
 const OrderSuccess: React.FC = function () {
   const ctx = JSON.parse(localStorage.getItem('store')!)
+  console.log(ctx)
 
   return (
     <div className="order-success">

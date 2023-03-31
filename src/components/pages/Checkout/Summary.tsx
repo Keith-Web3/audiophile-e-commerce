@@ -28,6 +28,8 @@ const Summary: React.FC = function () {
   const ctx = useContext(CartContext)
   const navigation = useNavigation()
 
+  console.log(ctx)
+
   return (
     <div className="summary">
       <h2>summary</h2>
