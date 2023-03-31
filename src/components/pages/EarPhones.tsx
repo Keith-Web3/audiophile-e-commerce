@@ -3,7 +3,6 @@ import { nanoid } from 'nanoid'
 
 import Product from '../shared/Product'
 import yx1 from '../../assets/product-yx1-earphones/mobile/image-category-page-preview.jpg'
-import Products from '../shared/Products'
 
 const EarPhones: React.FC = function () {
   return (

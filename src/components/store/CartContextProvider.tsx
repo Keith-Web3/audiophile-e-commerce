@@ -1,4 +1,10 @@
-import React, { createContext, ReactNode, useEffect, useState } from 'react'
+import React, {
+  createContext,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import { calculateTotal } from '../shared/Cart'
 
 export interface Item {
@@ -29,13 +35,18 @@ export const CartProvider: React.FC<{ children: ReactNode }> = function ({
 }) {
   const [items, setItems] = useState<Item[] | []>([])
 
+  const hasMounted = useRef<boolean>(false)
+
   useEffect(() => {
-    const isStoreSet = localStorage.getItem('store')
-    console.log(isStoreSet?.length)
-    isStoreSet?.length && setItems(JSON.parse(isStoreSet))
-  }, [])
-  useEffect(() => {
-    localStorage.setItem('store', JSON.stringify(items))
+    if (hasMounted.current) {
+      localStorage.setItem('store', JSON.stringify(items))
+      console.log(items)
+    } else {
+      const isStoreSet = localStorage.getItem('store')
+      console.log(isStoreSet)
+      isStoreSet?.length && setItems(JSON.parse(isStoreSet))
+      hasMounted.current = true
+    }
   }, [calculateTotal(items)])
 
   const initialValue: cart = {
@@ -54,7 +65,6 @@ export const CartProvider: React.FC<{ children: ReactNode }> = function ({
           clonedItems[idx].count += payload.count
           setItems(clonedItems)
         }
-        ;``
       } else if (action === 'REMOVE') {
         if (clonedItems[idx].count > 1) {
           clonedItems[idx].count--
