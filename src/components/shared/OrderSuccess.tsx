@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
 import { calculateTotal } from './Cart'
 import checkIcon from '../../assets/checkout/icon-order-confirmation.svg'
-import CartContext from '../store/CartContextProvider'
 import Button from '../UI/Button'
 import '../../sass/shared/ordersuccess.scss'
 import { Link } from 'react-router-dom'
