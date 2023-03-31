@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import { calculateTotal } from './Cart'
 import checkIcon from '../../assets/checkout/icon-order-confirmation.svg'
@@ -9,6 +9,14 @@ import { Link } from 'react-router-dom'
 
 const OrderSuccess: React.FC = function () {
   const ctx = useContext(CartContext)
+
+  useEffect(
+    () => () => {
+      ctx.dispatchItem({ action: 'CLEAR', payload: null })
+    },
+    []
+  )
+  // console.log(ctx.items)
 
   return (
     <div className="order-success">
