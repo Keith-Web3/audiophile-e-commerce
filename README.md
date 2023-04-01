@@ -1,9 +1,7 @@
 # audiophile-e-commerce
 
-*Note: ⚠️This project is currently in development and not yet production-ready.*
-
 Audiophile is an e-commerce website that sells audio equipment such as speakers, headphones, and earphones.
-Users can pay for their purchases using either their credit cards (using the Stripe payment gateway) or cryptocurrencies (using the MetaMask SDK).
+Users can pay for their purchases using either their credit cards (using the Stripe payment gateway) or cryptocurrencies (using coinbase api).
 
 ## Features
 * Browse audio equipments by category
@@ -18,7 +16,6 @@ Users can pay for their purchases using either their credit cards (using the Str
 
 ```
 VITE_STRIPE_API_KEY=your_stripe_api_key_here
-VITE_METAMASK_API_KEY=your_metamask_api_key_here
 ```
 4. Run the app using npm run dev.
 
