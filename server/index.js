@@ -22,6 +22,17 @@ const { Client, resources, Webhook } = require('coinbase-commerce-node')
 Client.init(process.env.COINBASE_KEY)
 const { Charge } = resources
 
+const calculateTotal = function (items) {
+  const prices = items.map(item => ({
+    price: item.price.replace(/[^0-9]/g, ''),
+    count: item.count,
+  }))
+  const total = prices.reduce((acc, item) => {
+    return +item.price * item.count + acc
+  }, 0)
+  return total
+}
+
 const storeItems = new Map([
   ['XX99 MK II', { priceInCents: 299900, name: 'XX99 Mark II Headphones' }],
   ['XX99 MK I', { priceInCents: 175000, name: 'XX99 Mark I Headphones' }],
@@ -58,21 +69,27 @@ app.post('/create-checkout', async (req, res) => {
   }
 })
 app.get('/create-charge', async (req, res) => {
+  const orders = JSON.parse(req.query.params)
+  const userName = req.query.userName
+
+  console.log(orders)
+
   try {
     const chargeData = {
-      name: 'Widget',
-      description: 'Useless widget',
+      name: orders.reduce((reducer, curr) => {
+        return reducer + `, ${curr.name}`
+      }, ''),
+      description: 'Audiophile equipments',
       local_price: {
-        amount: 9.99,
+        amount: new Intl.NumberFormat('en-US').format(calculateTotal(orders)),
         currency: 'USD',
       },
       pricing_type: 'fixed_price',
       metadata: {
-        user: 'Ola',
+        user: userName,
       },
     }
     const charge = await Charge.create(chargeData)
-    console.log(charge)
     res.send(charge)
   } catch (err) {
     res.status(400).send('failure!')

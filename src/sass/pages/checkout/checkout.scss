@@ -150,8 +150,8 @@
       }
       .payment-details {
         display: grid;
-        grid-template: repeat(3, auto) / repeat(2, 1fr);
-        grid-template-areas: 'header header' 'method method' 'label-one label-two';
+        grid-template: repeat(2, auto) / repeat(2, 1fr);
+        grid-template-areas: 'header header' 'method method';
         gap: $spacer;
 
         h2 {
@@ -159,13 +159,6 @@
         }
         .method {
           grid-area: method;
-          margin-bottom: $spacer * 1.5;
-        }
-        .label:first-of-type(1) {
-          grid-area: label-one;
-        }
-        .label:first-of-type(2) {
-          grid-area: label-two;
         }
       }
       .billing-details {

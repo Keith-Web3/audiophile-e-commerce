@@ -19,30 +19,43 @@ export const checkoutAction = async function ({
   request: Request
 }) {
   const url = request.url
+  const formData = await request.formData()
+  const paymentMethod = formData.get('payment')
+  const userName = formData.get('name')
   const params: Item[] = JSON.parse(
     new URL(url).searchParams.get('items') as string
   )
   try {
-    const res = await fetch(
-      'https://audiophile-e-commerce-ashy.vercel.app/create-checkout',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          items: params.map(item => {
-            return { id: item.name, quantity: item.count }
+    let res
+    let paymentUrl
+    if (paymentMethod === 'card') {
+      res = await fetch(
+        'https://audiophile-e-commerce-ashy.vercel.app/create-checkout',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            items: params.map(item => {
+              return { id: item.name, quantity: item.count }
+            }),
           }),
-        }),
-        credentials: 'include',
-      }
-    )
+          credentials: 'include',
+        }
+      )
+      const data = await res.json()
+      paymentUrl = data.url
+    } else {
+      res = await fetch(
+        `https://audiophile-e-commerce-ashy.vercel.app/create-charge?params=${params}&name=${userName}`
+      )
+      const data = await res.json()
+      paymentUrl = data.hosted_url
+    }
     if (!res.ok) {
       return res.json().then(json => Promise.reject(json))
     }
-    const data = await res.json()
-    const paymentUrl = data.url
     throw redirect(paymentUrl)
   } catch (err) {
     throw err
@@ -138,7 +151,7 @@ const Checkout: React.FC = function () {
               type="text"
               placeholder="1137 Williams Avenue"
               name="address"
-              pattern="[[A-Za-z0-9]+\s*,*\s*]+"
+              pattern="[A-Za-z,\s]+"
               onChange={formVal}
               required
             />
@@ -160,7 +173,7 @@ const Checkout: React.FC = function () {
             <input
               type="text"
               onChange={formVal}
-              pattern="[[A-Za-z0-9]+\s*,*\s*]+"
+              pattern="[A-Za-z,\s]+"
               placeholder="New York"
               name="city"
               required
@@ -184,23 +197,27 @@ const Checkout: React.FC = function () {
           <h2>Payment Details</h2>
           <div className="method">
             <p>Payment Method</p>
-            <label htmlFor="e-money">
-              <input type="radio" name="payment" id="e-money" />
-              e-Money
+            <label htmlFor="card">
+              <input
+                type="radio"
+                name="payment"
+                value="card"
+                id="card"
+                required
+              />
+              Pay with card
             </label>
-            <label htmlFor="cash">
-              <input type="radio" name="payment" id="cash" />
-              Cash on Delivery
+            <label htmlFor="crypto">
+              <input
+                type="radio"
+                name="payment"
+                value="crypto"
+                id="crypto"
+                required
+              />
+              Pay with crypto
             </label>
           </div>
-          <label className="label" htmlFor="e-money-number">
-            e-Money Number
-            <input type="text" name="e-money-number" placeholder="238521993" />
-          </label>
-          <label className="label" htmlFor="e-money-pin">
-            e-Money Pin
-            <input type="text" name="e-money-pin" placeholder="6891" />
-          </label>
         </div>
       </div>
       <Summary />
