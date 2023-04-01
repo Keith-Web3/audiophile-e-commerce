@@ -154,7 +154,7 @@ const Checkout: React.FC = function () {
               type="text"
               placeholder="1137 Williams Avenue"
               name="address"
-              pattern="[A-Za-z,\s]+"
+              pattern="[A-Za-z0-9,\s]+"
               onChange={formVal}
               required
             />
@@ -176,7 +176,7 @@ const Checkout: React.FC = function () {
             <input
               type="text"
               onChange={formVal}
-              pattern="[A-Za-z,\s]+"
+              pattern="[A-Za-z0-9,\s]+"
               placeholder="New York"
               name="city"
               required
