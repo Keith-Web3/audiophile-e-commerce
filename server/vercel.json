@@ -6,5 +6,6 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [{ "source": "/server/(.*)", "destination": "/server" }]
+  "rewrites": [{ "source": "/server/(.*)", "destination": "/server" }],
+  "redirects": [{ "source": "/*", "destination": "/index.html" }]
 }

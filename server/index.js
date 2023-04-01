@@ -27,7 +27,7 @@ const storeItems = new Map([
   ['YX1', { priceInCents: 59900, name: 'YX1 SPEAKER' }],
 ])
 
-app.post('/', async (req, res) => {
+app.post('/create-checkout', async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
