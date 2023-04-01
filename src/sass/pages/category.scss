@@ -14,6 +14,11 @@
         margin-top: $spacer * 4;
       }
     }
+    @include screen(850) {
+      &.products {
+        padding-inline: 0;
+      }
+    }
   }
 
   .hero-section {

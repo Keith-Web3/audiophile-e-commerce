@@ -189,7 +189,7 @@ const Checkout: React.FC = function () {
               type="text"
               placeholder="United States"
               name="country"
-              pattern="\w{3,}"
+              pattern="[A-Za-z0-9,-\s]{3,}"
               onChange={formVal}
               required
             />

@@ -119,6 +119,9 @@
         background-size: 700px;
         background-position: left -8.4 * $spacer top -5 * $spacer;
       }
+      @include screen(950) {
+        margin-top: $spacer * 1.5;
+      }
 
       & > * {
         max-width: 349px;
