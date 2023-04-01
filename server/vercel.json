@@ -7,5 +7,5 @@
     }
   ],
   "rewrites": [{ "source": "/server/(.*)", "destination": "/server" }],
-  "redirects": [{ "source": "/*", "destination": "/index.html" }]
+  "redirects": [{ "source": "/server/(.*)", "destination": "/server" }]
 }
