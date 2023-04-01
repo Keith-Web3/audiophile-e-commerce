@@ -48,7 +48,8 @@ export const checkoutAction = async function ({
       paymentUrl = data.url
     } else {
       res = await fetch(
-        `https://audiophile-e-commerce-ashy.vercel.app/create-charge?params=${params}&name=${userName}`
+        `https://audiophile-e-commerce-ashy.vercel.app/create-charge?params=${params}&name=${userName}`,
+        { credentials: 'include' }
       )
       const data = await res.json()
       paymentUrl = data.hosted_url
