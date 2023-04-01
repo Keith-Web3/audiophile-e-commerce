@@ -6,7 +6,5 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
-    { "source": "/create-checkout/(.*)", "destination": "./index.js" }
-  ]
+  "rewrites": [{ "source": "/create-checkout", "destination": "/index.js" }]
 }
