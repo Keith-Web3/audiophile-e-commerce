@@ -17,6 +17,10 @@ app.use(
 )
 
 const stripe = require('stripe')(process.env.STRIPE_KEY)
+const { Client, resources, Webhook } = require('coinbase-commerce-node')
+
+Client.init(process.env.COINBASE_KEY)
+const { Charge } = resources
 
 const storeItems = new Map([
   ['XX99 MK II', { priceInCents: 299900, name: 'XX99 Mark II Headphones' }],
@@ -51,6 +55,39 @@ app.post('/create-checkout', async (req, res) => {
     res.json({ url: session.url })
   } catch (e) {
     res.status(500).json({ error: e.message })
+  }
+})
+app.get('/create-charge', async (req, res) => {
+  try {
+    const chargeData = {
+      name: 'Widget',
+      description: 'Useless widget',
+      local_price: {
+        amount: 9.99,
+        currency: 'USD',
+      },
+      pricing_type: 'fixed_price',
+      metadata: {
+        user: 'Ola',
+      },
+    }
+    const charge = await Charge.create(chargeData)
+    console.log(charge)
+    res.send(charge)
+  } catch (err) {
+    res.status(400).send('failure!')
+  }
+})
+app.get('/webhooks', async (req, res) => {
+  const rawBody = req.rawBody
+  const signature = req.headers['x-cc-webhook-signature']
+  const webhookSecret = process.env.WEBHOOK_SECRET
+
+  try {
+    const event = Webhook.verifyEventBody(rawBody, signature, webhookSecret)
+    res.send(`success ${event.id}`)
+  } catch (err) {
+    res.status(400).send('failure!')
   }
 })
 
