@@ -72,16 +72,16 @@ app.get('/create-charge', async (req, res) => {
   const orders = JSON.parse(req.query.params)
   const userName = req.query.userName
 
-  console.log(orders)
-
   try {
     const chargeData = {
-      name: orders.reduce((reducer, curr) => {
-        return reducer + `, ${curr.name}`
-      }, ''),
+      name: orders
+        .map(val => {
+          return val.name
+        })
+        .join(', '),
       description: 'Audiophile equipments',
       local_price: {
-        amount: new Intl.NumberFormat('en-US').format(calculateTotal(orders)),
+        amount: calculateTotal(orders),
         currency: 'USD',
       },
       pricing_type: 'fixed_price',
@@ -92,7 +92,7 @@ app.get('/create-charge', async (req, res) => {
     const charge = await Charge.create(chargeData)
     res.send(charge)
   } catch (err) {
-    res.status(400).send('failure!')
+    res.status(400).send(err.message)
   }
 })
 app.get('/webhooks', async (req, res) => {
