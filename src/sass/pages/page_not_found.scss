@@ -1,18 +1,91 @@
 @use '../variables' as *;
 
 .page-not-found {
-  background-image: url(../../assets/shared/_Keith_Realistic_3D_wanderer_entering_a_land_which_has_a_dashbo_0af96dee-f04e-4f19-a555-6e59f5ce1e22.png);
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  padding: $spacer;
-  display: grid;
-  align-content: bottom;
+  background-color: $white-200;
+  .container {
+    padding: $spacer;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin-inline: auto;
 
-  &__header {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #71514f;
+    & > img {
+      width: 100%;
+    }
+
+    main {
+      @include screen(570) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        margin-block: auto;
+      }
+    }
+  }
+  & ~ .header {
+    display: none;
+  }
+  & ~ .footer {
+    display: none;
+  }
+  h1 {
+    color: #2e77e9;
+    margin-bottom: $spacer;
+    text-align: center;
+
+    @include screen(570) {
+      text-align: start;
+      margin-bottom: 0;
+    }
+  }
+  p {
+    text-align: center;
+    max-width: 403px;
+    margin-inline: auto;
+    @include screen(570) {
+      text-align: start;
+      margin-inline: 0;
+      max-width: unset;
+    }
+
+    &:first-of-type {
+      font-weight: 700;
+      font-size: 2rem;
+    }
+    &:nth-of-type(2) {
+      font-size: 1.75rem;
+      font-weight: 500;
+    }
+    &:nth-of-type(3) {
+      color: #4b4b4b;
+      margin-block: $spacer;
+    }
+  }
+  a {
+    display: block;
+    width: max-content;
+    margin-inline: auto;
+    text-decoration: none;
+    @include screen(570) {
+      margin-inline: 0;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: $spacer;
+      background-color: #2e77e9;
+      color: $white;
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      padding: 0.75em 1.3em;
+      cursor: pointer;
+
+      img {
+        width: 1.2rem;
+      }
+    }
   }
 }

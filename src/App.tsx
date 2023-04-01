@@ -54,6 +54,7 @@ const router = createBrowserRouter(
           element={<ProductDetail {...data[5]} />}
         />
       </Route>
+      <Route path="*" element={<PageNotFound />} />
     </Route>
   )
 )
