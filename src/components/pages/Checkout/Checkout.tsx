@@ -23,18 +23,21 @@ export const checkoutAction = async function ({
     new URL(url).searchParams.get('items') as string
   )
   try {
-    const res = await fetch('https://audiophile-e-commerce-ashy.vercel.app/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        items: params.map(item => {
-          return { id: item.name, quantity: item.count }
+    const res = await fetch(
+      'https://audiophile-e-commerce-ashy.vercel.app/create-checkout',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          items: params.map(item => {
+            return { id: item.name, quantity: item.count }
+          }),
         }),
-      }),
-      credentials: 'include',
-    })
+        credentials: 'include',
+      }
+    )
     if (!res.ok) {
       return res.json().then(json => Promise.reject(json))
     }
