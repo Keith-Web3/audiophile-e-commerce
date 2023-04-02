@@ -18,7 +18,7 @@ const PageNotFound = function () {
               This Page doesn`t exist or was removed! We suggest you back to
               home.
             </p>
-            <Link to="/">
+            <Link to="/" replace>
               <button>
                 <img src={backArrow} alt="back" />
                 Back to home
