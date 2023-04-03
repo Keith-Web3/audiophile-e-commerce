@@ -1,9 +1,11 @@
 @use '../variables' as *;
 
 .cart-main {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  height: 100vh;
+  inset: 0 0 auto 0;
   padding: $spacer;
+  z-index: 1;
 
   .backdrop {
     position: absolute;
