@@ -1,9 +1,8 @@
 @use '../variables' as *;
 
 .cart-main {
-  position: fixed;
-  height: 100vh;
-  inset: 0 0 auto 0;
+  position: absolute;
+  inset: 0;
   padding: $spacer;
   z-index: 1;
 
@@ -17,7 +16,8 @@
   max-width: max-content;
   padding: $spacer * 1.5;
   border-radius: 8px;
-  position: relative;
+  position: sticky;
+  top: $spacer * 2;
   z-index: 2;
   background-color: $white;
   margin-top: $spacer * 5;
