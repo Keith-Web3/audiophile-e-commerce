@@ -1,4 +1,6 @@
 # audiophile-e-commerce
+![Screenshot (486)](https://github.com/user-attachments/assets/1dcf0d0b-ac46-466f-9ce9-9373d87bd382)
+
 
 Audiophile is an e-commerce website that sells audio equipment such as speakers, headphones, and earphones.
 Users can pay for their purchases using either their credit cards (using the Stripe payment gateway) or cryptocurrencies (using coinbase api).
